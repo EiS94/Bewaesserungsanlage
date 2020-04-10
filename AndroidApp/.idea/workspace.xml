@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="6368bd3b-abd4-4c4c-ac0b-a865b86ab6ea" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/WaterTrial/app/src/main/java/com/schaubeck/watertrial/Settings.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WaterTrial/app/src/main/java/com/schaubeck/watertrial/SettingsChanger.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WaterTrial/app/src/main/res/layout/activity_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WaterTrial/app/src/main/res/raw/cat_noise.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WaterTrial/app/src/main/res/raw/heidi.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WaterTrial/app/src/main/res/raw/schorsch.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WaterTrial/app/src/main/res/raw/wanda.mp3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/AndroidApp.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/AndroidApp.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WaterTrial/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/WaterTrial/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WaterTrial/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/WaterTrial/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WaterTrial/app/src/main/java/com/schaubeck/watertrial/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/WaterTrial/app/src/main/java/com/schaubeck/watertrial/Login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WaterTrial/app/src/main/java/com/schaubeck/watertrial/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/WaterTrial/app/src/main/java/com/schaubeck/watertrial/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WaterTrial/app/src/main/java/com/schaubeck/watertrial/Utility.java" beforeDir="false" afterPath="$PROJECT_DIR$/WaterTrial/app/src/main/java/com/schaubeck/watertrial/Utility.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WaterTrial/app/src/main/res/drawable/ic_allplantsok.xml" beforeDir="false" afterPath="$PROJECT_DIR$/WaterTrial/app/src/main/res/drawable/ic_allplantsok.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WaterTrial/app/src/main/res/layout/activity_main2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/WaterTrial/app/src/main/res/layout/activity_main2.xml" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DarkyenusTimeTracker">
+    <option name="totalTimeSeconds" value="18402" />
+  </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="testRunner" value="GRADLE" />
+    <option name="delegatedBuild" value="true" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectConfigurationFiles">
+    <option name="files">
+      <list>
+        <option value="$PROJECT_DIR$/.idea/misc.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1ZiEwgvpESURqynO8PG4giZz5Uj" />
+  <component name="PropertiesComponent">
+    <property name="android.sdk.path" value="$USER_HOME$/Android/Sdk" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/WaterTrial" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6368bd3b-abd4-4c4c-ac0b-a865b86ab6ea" name="Default Changelist" comment="" />
+      <created>1582291124824</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1582291124824</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Main">
+
+    <Switch
+        android:id="@+id/switchWaterValve"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textWater" />
+
+    <TextView
+        android:id="@+id/textGarden"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="Garten:"
+        android:textStyle="bold"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintBottom_toTopOf="@+id/switchWaterValve"
+        app:layout_constraintEnd_toEndOf="@+id/switchWaterValve"
+        app:layout_constraintStart_toStartOf="@+id/switchWaterValve"
+        app:layout_constraintTop_toBottomOf="@+id/textData"/>
+
+    <TextView
+        android:id="@+id/textWater"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp"
+        android:text="Wasser"
+        app:layout_constraintBottom_toTopOf="@+id/switchWaterValve"
+        app:layout_constraintEnd_toEndOf="@+id/switchWaterValve"
+        app:layout_constraintStart_toStartOf="@+id/switchWaterValve"
+        app:layout_constraintTop_toBottomOf="@+id/textGarden" />
+
+    <TextView
+        android:id="@+id/textOff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="AUS"
+        app:layout_constraintBottom_toBottomOf="@+id/switchWaterValve"
+        app:layout_constraintEnd_toStartOf="@+id/switchWaterValve"
+        app:layout_constraintTop_toTopOf="@+id/switchWaterValve" />
+
+    <TextView
+        android:id="@+id/textOn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="AN"
+        app:layout_constraintBottom_toBottomOf="@+id/switchWaterValve"
+        app:layout_constraintStart_toEndOf="@+id/switchWaterValve"
+        app:layout_constraintTop_toTopOf="@+id/switchWaterValve" />
+
+    <!--
+    <ImageView
+        android:id="@+id/gifLoad"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="45dp"
+        app:layout_constraintEnd_toEndOf="@+id/garden"
+        app:layout_constraintStart_toStartOf="@+id/garden"
+        app:layout_constraintTop_toBottomOf="@id/garden"
+        tools:srcCompat="@tools:sample/avatars" />
+        -->
+
+    <TextView
+        android:id="@+id/textTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:text="Wetter:"
+        android:textStyle="bold"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/textTitle"
+        app:layout_constraintStart_toStartOf="@+id/textTitle"
+        app:layout_constraintTop_toBottomOf="@+id/textTitle" />
+
+    <ImageButton
+        android:id="@+id/btnUpdate2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_rotate" />
+
+    <Button
+        android:id="@+id/btnChartActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Wetterdaten"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toTopOf="@+id/btnDishesActivity"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnDishesActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Essensideen"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toTopOf="@+id/settings"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/progressBarMain"
+        style="?android:attr/progressBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/btnUpdate2"
+        app:layout_constraintStart_toStartOf="@+id/btnUpdate2"
+        app:layout_constraintTop_toBottomOf="@+id/btnUpdate2" />
+
+    <!--
+    <ImageView
+        android:id="@+id/garden"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/switchWaterValve"
+        app:srcCompat="@drawable/ic_allplantsok" />
+        -->
+
+    <com.richpath.RichPathView
+        android:id="@+id/gardenNew"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/switchWaterValve"
+        app:vector="@drawable/ic_allplantsok" />
+
+    <Button
+        android:id="@+id/settings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Einstellungen"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

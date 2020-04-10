@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DishActivity">
+
+    <TextView
+        android:id="@+id/dishName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/dishBackground"
+        app:layout_constraintStart_toStartOf="@+id/dishBackground"
+        app:layout_constraintTop_toTopOf="@+id/dishBackground" />
+
+    <Button
+        android:id="@+id/btnCloseDish"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="Schließen"
+        android:textAllCaps="false"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/dishBackground"
+        app:layout_constraintEnd_toEndOf="@+id/dishBackground"
+        app:layout_constraintStart_toStartOf="@+id/dishBackground" />
+
+    <ImageView
+        android:id="@+id/dishBackground"
+        android:visibility="invisible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_grey"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tableView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnRandom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Zufälliges Gericht"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Rezepte"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <CheckBox
+        android:id="@+id/veggyChecker"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="nur vegetarisch"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        android:layout_height="wrap_content" />
+
+    <de.codecrafters.tableview.TableView
+        android:id="@+id/tableView"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="32dp"
+        android:tint="@color/colorAccent"
+        app:layout_constraintBottom_toTopOf="@id/btnRandom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/veggyChecker" />
+
+    <TextView
+        android:id="@+id/dishText"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:autoLink="web"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/dishBackground"
+        app:layout_constraintStart_toStartOf="@+id/dishBackground"
+        app:layout_constraintTop_toBottomOf="@+id/dishName" />
+
+    <ImageButton
+        android:id="@+id/btnAddDish"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
+        android:background="#00FFFFFF"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/plus" />
+
+    <TextView
+        android:id="@+id/textNewName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Name:"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/dishBackground"
+        app:layout_constraintStart_toStartOf="@+id/dishBackground"
+        app:layout_constraintTop_toTopOf="@id/dishBackground" />
+
+    <EditText
+        android:id="@+id/inputName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/dishBackground"
+        app:layout_constraintStart_toStartOf="@+id/dishBackground"
+        app:layout_constraintTop_toBottomOf="@+id/textNewName" />
+
+    <CheckBox
+        android:id="@+id/inputVeggy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="vegetarisch"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/dishBackground"
+        app:layout_constraintStart_toStartOf="@+id/dishBackground"
+        app:layout_constraintTop_toBottomOf="@+id/inputName" />
+
+    <TextView
+        android:id="@+id/textNewZutaten"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Zutaten"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/dishBackground"
+        app:layout_constraintStart_toStartOf="@+id/dishBackground"
+        app:layout_constraintTop_toBottomOf="@+id/inputVeggy" />
+
+    <EditText
+        android:id="@+id/inputZutaten"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/dishBackground"
+        app:layout_constraintStart_toStartOf="@+id/dishBackground"
+        app:layout_constraintTop_toBottomOf="@+id/textNewZutaten" />
+
+    <TextView
+        android:id="@+id/textNewUrl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Internetseite zum Rezept:"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/dishBackground"
+        app:layout_constraintStart_toStartOf="@+id/dishBackground"
+        app:layout_constraintTop_toBottomOf="@+id/inputZutaten" />
+
+    <EditText
+        android:id="@+id/inputUrl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text=""
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/dishBackground"
+        app:layout_constraintStart_toStartOf="@+id/dishBackground"
+        app:layout_constraintTop_toBottomOf="@+id/textNewUrl" />
+
+    <Button
+        android:id="@+id/btnAddNewDish"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hinzufügen"
+        android:textAllCaps="false"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@id/dishBackground"
+        app:layout_constraintEnd_toEndOf="@+id/dishBackground"
+        app:layout_constraintStart_toStartOf="@+id/dishBackground"
+         />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

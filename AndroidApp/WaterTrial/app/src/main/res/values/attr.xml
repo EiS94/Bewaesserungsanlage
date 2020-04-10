@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="garden">
+        <attr name="good" format="color" />
+        <attr name="middle" format="color" />
+        <attr name="bad" format="color" />
+    </declare-styleable>
+</resources>
