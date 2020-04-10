@@ -1,0 +1,1861 @@
+{
+    "extension": "linecounter",
+    "version": "0.2.7",
+    "workspace": "/home/pi/Bewaesserung",
+    "linecount": [
+        {
+            "version": "0.2.7",
+            "counttime": "2020-03-12 21:15:10",
+            "filesum": 281,
+            "codesum": 16026,
+            "commentsum": 8076,
+            "blanksum": 5390,
+            "statistics": {
+                ".py": {
+                    "code": 444,
+                    "comment": 45,
+                    "blank": 80
+                },
+                ".txt": {
+                    "code": 60,
+                    "comment": 0,
+                    "blank": 0
+                },
+                ".json": {
+                    "code": 13,
+                    "comment": 0,
+                    "blank": 0
+                },
+                ".html": {
+                    "code": 323,
+                    "comment": 0,
+                    "blank": 28
+                },
+                ".h": {
+                    "code": 3010,
+                    "comment": 1878,
+                    "blank": 636
+                },
+                ".xml": {
+                    "code": 127,
+                    "comment": 0,
+                    "blank": 0
+                },
+                "": {
+                    "code": 1128,
+                    "comment": 22,
+                    "blank": 273
+                },
+                ".svg": {
+                    "code": 46,
+                    "comment": 0,
+                    "blank": 0
+                },
+                ".iml": {
+                    "code": 20,
+                    "comment": 0,
+                    "blank": 0
+                },
+                ".LESSER": {
+                    "code": 336,
+                    "comment": 4,
+                    "blank": 112
+                },
+                ".md": {
+                    "code": 14,
+                    "comment": 3,
+                    "blank": 5
+                },
+                ".tex": {
+                    "code": 82,
+                    "comment": 1,
+                    "blank": 3
+                },
+                ".dirs": {
+                    "code": 3,
+                    "comment": 0,
+                    "blank": 0
+                },
+                ".c": {
+                    "code": 10282,
+                    "comment": 6024,
+                    "blank": 4214
+                },
+                ".install": {
+                    "code": 7,
+                    "comment": 2,
+                    "blank": 0
+                },
+                ".shlibs": {
+                    "code": 2,
+                    "comment": 0,
+                    "blank": 0
+                },
+                ".1": {
+                    "code": 83,
+                    "comment": 0,
+                    "blank": 25
+                },
+                ".rtb": {
+                    "code": 9,
+                    "comment": 24,
+                    "blank": 0
+                },
+                ".sh": {
+                    "code": 33,
+                    "comment": 73,
+                    "blank": 12
+                },
+                ".TXT": {
+                    "code": 4,
+                    "comment": 0,
+                    "blank": 2
+                }
+            },
+            "filelist": [
+                {
+                    "blank": 0,
+                    "code": 6,
+                    "comment": 0,
+                    "filename": ".idea/inspectionProfiles/profiles_settings.xml"
+                },
+                {
+                    "blank": 0,
+                    "code": 6,
+                    "comment": 0,
+                    "filename": ".idea/jsLibraryMappings.xml"
+                },
+                {
+                    "blank": 0,
+                    "code": 7,
+                    "comment": 0,
+                    "filename": ".idea/misc.xml"
+                },
+                {
+                    "blank": 0,
+                    "code": 8,
+                    "comment": 0,
+                    "filename": ".idea/modules.xml"
+                },
+                {
+                    "blank": 0,
+                    "code": 20,
+                    "comment": 0,
+                    "filename": ".idea/remote.iml"
+                },
+                {
+                    "blank": 0,
+                    "code": 6,
+                    "comment": 0,
+                    "filename": ".idea/vcs.xml"
+                },
+                {
+                    "blank": 0,
+                    "code": 94,
+                    "comment": 0,
+                    "filename": ".idea/workspace.xml"
+                },
+                {
+                    "filename": "__pycache__/jsonDataReader.cpython-37.pyc",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "__pycache__/JsonWriter.cpython-37.pyc",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "__pycache__/plantNamesWriter.cpython-37.pyc",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "__pycache__/temperaturData.cpython-37.pyc",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "__pycache__/test.cpython-37.pyc",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "__pycache__/ValveHandler.cpython-37.pyc",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "__pycache__/wheaterData.cpython-37.pyc",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 1,
+                    "code": 8,
+                    "comment": 0,
+                    "filename": "analog.py"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "data.json"
+                },
+                {
+                    "blank": 0,
+                    "code": 30,
+                    "comment": 0,
+                    "filename": "data/wheater.txt"
+                },
+                {
+                    "blank": 3,
+                    "code": 26,
+                    "comment": 0,
+                    "filename": "jsonDataReader.py"
+                },
+                {
+                    "blank": 23,
+                    "code": 116,
+                    "comment": 3,
+                    "filename": "JsonWriter.py"
+                },
+                {
+                    "filename": "JsonWriter.pyc",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 11,
+                    "comment": 0,
+                    "filename": "package-lock.json"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "plantNames.json"
+                },
+                {
+                    "blank": 6,
+                    "code": 36,
+                    "comment": 0,
+                    "filename": "plantNamesWriter.py"
+                },
+                {
+                    "blank": 29,
+                    "code": 155,
+                    "comment": 28,
+                    "filename": "Server.py"
+                },
+                {
+                    "blank": 0,
+                    "code": 46,
+                    "comment": 0,
+                    "filename": "static/AllPlantsOk.svg"
+                },
+                {
+                    "blank": 19,
+                    "code": 223,
+                    "comment": 0,
+                    "filename": "templates/index.html"
+                },
+                {
+                    "blank": 5,
+                    "code": 49,
+                    "comment": 0,
+                    "filename": "templates/test.html"
+                },
+                {
+                    "blank": 4,
+                    "code": 51,
+                    "comment": 0,
+                    "filename": "templates/wheaterData.html"
+                },
+                {
+                    "blank": 3,
+                    "code": 20,
+                    "comment": 0,
+                    "filename": "test.py"
+                },
+                {
+                    "blank": 11,
+                    "code": 51,
+                    "comment": 11,
+                    "filename": "ValveHandler.py"
+                },
+                {
+                    "blank": 0,
+                    "code": 30,
+                    "comment": 0,
+                    "filename": "wheater.txt"
+                },
+                {
+                    "blank": 4,
+                    "code": 32,
+                    "comment": 3,
+                    "filename": "wheaterData.py"
+                },
+                {
+                    "blank": 0,
+                    "code": 7,
+                    "comment": 0,
+                    "filename": "WiringPi/.gitignore"
+                },
+                {
+                    "blank": 1,
+                    "code": 28,
+                    "comment": 1,
+                    "filename": "WiringPi/build"
+                },
+                {
+                    "blank": 28,
+                    "code": 84,
+                    "comment": 1,
+                    "filename": "WiringPi/COPYING.LESSER"
+                },
+                {
+                    "blank": 0,
+                    "code": 10,
+                    "comment": 0,
+                    "filename": "WiringPi/debian-template/wiringPi/DEBIAN/control"
+                },
+                {
+                    "blank": 0,
+                    "code": 5,
+                    "comment": 0,
+                    "filename": "WiringPi/debian-template/wiringPi/DEBIAN/postinst"
+                },
+                {
+                    "blank": 0,
+                    "code": 2,
+                    "comment": 0,
+                    "filename": "WiringPi/debian-template/wiringPi/DEBIAN/postrm"
+                },
+                {
+                    "blank": 0,
+                    "code": 9,
+                    "comment": 0,
+                    "filename": "WiringPi/debian/.gitignore"
+                },
+                {
+                    "blank": 3,
+                    "code": 3,
+                    "comment": 0,
+                    "filename": "WiringPi/debian/changelog"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "WiringPi/debian/compat"
+                },
+                {
+                    "blank": 3,
+                    "code": 26,
+                    "comment": 1,
+                    "filename": "WiringPi/debian/control"
+                },
+                {
+                    "blank": 3,
+                    "code": 12,
+                    "comment": 0,
+                    "filename": "WiringPi/debian/copyright"
+                },
+                {
+                    "blank": 0,
+                    "code": 2,
+                    "comment": 0,
+                    "filename": "WiringPi/debian/libwiringpi-dev.dirs"
+                },
+                {
+                    "blank": 0,
+                    "code": 2,
+                    "comment": 2,
+                    "filename": "WiringPi/debian/libwiringpi-dev.install"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "WiringPi/debian/libwiringpi2.install"
+                },
+                {
+                    "blank": 0,
+                    "code": 2,
+                    "comment": 0,
+                    "filename": "WiringPi/debian/libwiringpi2.shlibs"
+                },
+                {
+                    "blank": 11,
+                    "code": 38,
+                    "comment": 0,
+                    "filename": "WiringPi/debian/rules"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "WiringPi/debian/wiringpi.dirs"
+                },
+                {
+                    "blank": 0,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "WiringPi/debian/wiringpi.install"
+                },
+                {
+                    "blank": 54,
+                    "code": 113,
+                    "comment": 75,
+                    "filename": "WiringPi/devLib/ds1302.c"
+                },
+                {
+                    "blank": 7,
+                    "code": 14,
+                    "comment": 23,
+                    "filename": "WiringPi/devLib/ds1302.h"
+                },
+                {
+                    "filename": "WiringPi/devLib/ds1302.o",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 258,
+                    "code": 2053,
+                    "comment": 266,
+                    "filename": "WiringPi/devLib/font.h"
+                },
+                {
+                    "blank": 36,
+                    "code": 66,
+                    "comment": 62,
+                    "filename": "WiringPi/devLib/gertboard.c"
+                },
+                {
+                    "blank": 6,
+                    "code": 10,
+                    "comment": 29,
+                    "filename": "WiringPi/devLib/gertboard.h"
+                },
+                {
+                    "filename": "WiringPi/devLib/gertboard.o",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 106,
+                    "code": 272,
+                    "comment": 121,
+                    "filename": "WiringPi/devLib/lcd.c"
+                },
+                {
+                    "blank": 5,
+                    "code": 22,
+                    "comment": 25,
+                    "filename": "WiringPi/devLib/lcd.h"
+                },
+                {
+                    "filename": "WiringPi/devLib/lcd.o",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 133,
+                    "code": 391,
+                    "comment": 156,
+                    "filename": "WiringPi/devLib/lcd128x64.c"
+                },
+                {
+                    "blank": 2,
+                    "code": 15,
+                    "comment": 22,
+                    "filename": "WiringPi/devLib/lcd128x64.h"
+                },
+                {
+                    "filename": "WiringPi/devLib/lcd128x64.o",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "WiringPi/devLib/libwiringPiDev.so.2.60",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 26,
+                    "code": 114,
+                    "comment": 2,
+                    "filename": "WiringPi/devLib/Makefile"
+                },
+                {
+                    "blank": 56,
+                    "code": 113,
+                    "comment": 73,
+                    "filename": "WiringPi/devLib/maxdetect.c"
+                },
+                {
+                    "blank": 7,
+                    "code": 8,
+                    "comment": 25,
+                    "filename": "WiringPi/devLib/maxdetect.h"
+                },
+                {
+                    "filename": "WiringPi/devLib/maxdetect.o",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 22,
+                    "code": 36,
+                    "comment": 56,
+                    "filename": "WiringPi/devLib/piFace.c"
+                },
+                {
+                    "blank": 3,
+                    "code": 7,
+                    "comment": 22,
+                    "filename": "WiringPi/devLib/piFace.h"
+                },
+                {
+                    "filename": "WiringPi/devLib/piFace.o",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 43,
+                    "code": 75,
+                    "comment": 63,
+                    "filename": "WiringPi/devLib/piFaceOld.c"
+                },
+                {
+                    "blank": 22,
+                    "code": 53,
+                    "comment": 45,
+                    "filename": "WiringPi/devLib/piGlow.c"
+                },
+                {
+                    "blank": 6,
+                    "code": 16,
+                    "comment": 23,
+                    "filename": "WiringPi/devLib/piGlow.h"
+                },
+                {
+                    "filename": "WiringPi/devLib/piGlow.o",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 28,
+                    "code": 48,
+                    "comment": 37,
+                    "filename": "WiringPi/devLib/piNes.c"
+                },
+                {
+                    "blank": 5,
+                    "code": 17,
+                    "comment": 23,
+                    "filename": "WiringPi/devLib/piNes.h"
+                },
+                {
+                    "filename": "WiringPi/devLib/piNes.o",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 95,
+                    "code": 227,
+                    "comment": 111,
+                    "filename": "WiringPi/devLib/scrollPhat.c"
+                },
+                {
+                    "blank": 3,
+                    "code": 12,
+                    "comment": 24,
+                    "filename": "WiringPi/devLib/scrollPhat.h"
+                },
+                {
+                    "filename": "WiringPi/devLib/scrollPhat.o",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 130,
+                    "code": 324,
+                    "comment": 410,
+                    "filename": "WiringPi/devLib/scrollPhatFont.h"
+                },
+                {
+                    "blank": 10,
+                    "code": 26,
+                    "comment": 28,
+                    "filename": "WiringPi/examples/blink-thread.c"
+                },
+                {
+                    "blank": 6,
+                    "code": 17,
+                    "comment": 28,
+                    "filename": "WiringPi/examples/blink.c"
+                },
+                {
+                    "blank": 0,
+                    "code": 9,
+                    "comment": 24,
+                    "filename": "WiringPi/examples/blink.rtb"
+                },
+                {
+                    "blank": 4,
+                    "code": 8,
+                    "comment": 25,
+                    "filename": "WiringPi/examples/blink.sh"
+                },
+                {
+                    "blank": 19,
+                    "code": 65,
+                    "comment": 34,
+                    "filename": "WiringPi/examples/blink12.c"
+                },
+                {
+                    "blank": 22,
+                    "code": 75,
+                    "comment": 36,
+                    "filename": "WiringPi/examples/blink12drcs.c"
+                },
+                {
+                    "blank": 24,
+                    "code": 63,
+                    "comment": 37,
+                    "filename": "WiringPi/examples/blink6drcs.c"
+                },
+                {
+                    "blank": 8,
+                    "code": 28,
+                    "comment": 25,
+                    "filename": "WiringPi/examples/blink8-drcn.c"
+                },
+                {
+                    "blank": 7,
+                    "code": 26,
+                    "comment": 24,
+                    "filename": "WiringPi/examples/blink8.c"
+                },
+                {
+                    "blank": 38,
+                    "code": 118,
+                    "comment": 49,
+                    "filename": "WiringPi/examples/clock.c"
+                },
+                {
+                    "blank": 28,
+                    "code": 84,
+                    "comment": 1,
+                    "filename": "WiringPi/examples/COPYING.LESSER"
+                },
+                {
+                    "blank": 17,
+                    "code": 59,
+                    "comment": 28,
+                    "filename": "WiringPi/examples/delayTest.c"
+                },
+                {
+                    "blank": 52,
+                    "code": 141,
+                    "comment": 54,
+                    "filename": "WiringPi/examples/ds1302.c"
+                },
+                {
+                    "blank": 46,
+                    "code": 121,
+                    "comment": 76,
+                    "filename": "WiringPi/examples/Gertboard/7segments.c"
+                },
+                {
+                    "blank": 15,
+                    "code": 35,
+                    "comment": 36,
+                    "filename": "WiringPi/examples/Gertboard/buttons.c"
+                },
+                {
+                    "blank": 20,
+                    "code": 37,
+                    "comment": 39,
+                    "filename": "WiringPi/examples/Gertboard/gertboard.c"
+                },
+                {
+                    "blank": 20,
+                    "code": 58,
+                    "comment": 0,
+                    "filename": "WiringPi/examples/Gertboard/Makefile"
+                },
+                {
+                    "blank": 21,
+                    "code": 29,
+                    "comment": 10,
+                    "filename": "WiringPi/examples/Gertboard/record.c"
+                },
+                {
+                    "blank": 20,
+                    "code": 26,
+                    "comment": 32,
+                    "filename": "WiringPi/examples/Gertboard/temperature.c"
+                },
+                {
+                    "blank": 18,
+                    "code": 25,
+                    "comment": 30,
+                    "filename": "WiringPi/examples/Gertboard/voltmeter.c"
+                },
+                {
+                    "blank": 35,
+                    "code": 87,
+                    "comment": 30,
+                    "filename": "WiringPi/examples/Gertboard/vumeter.c"
+                },
+                {
+                    "blank": 1,
+                    "code": 0,
+                    "comment": 22,
+                    "filename": "WiringPi/examples/header.h"
+                },
+                {
+                    "blank": 18,
+                    "code": 42,
+                    "comment": 58,
+                    "filename": "WiringPi/examples/isr-osc.c"
+                },
+                {
+                    "blank": 16,
+                    "code": 50,
+                    "comment": 44,
+                    "filename": "WiringPi/examples/isr.c"
+                },
+                {
+                    "blank": 90,
+                    "code": 190,
+                    "comment": 73,
+                    "filename": "WiringPi/examples/lcd-adafruit.c"
+                },
+                {
+                    "blank": 65,
+                    "code": 162,
+                    "comment": 60,
+                    "filename": "WiringPi/examples/lcd.c"
+                },
+                {
+                    "blank": 12,
+                    "code": 18,
+                    "comment": 39,
+                    "filename": "WiringPi/examples/lowPower.c"
+                },
+                {
+                    "blank": 37,
+                    "code": 134,
+                    "comment": 2,
+                    "filename": "WiringPi/examples/Makefile"
+                },
+                {
+                    "blank": 9,
+                    "code": 28,
+                    "comment": 23,
+                    "filename": "WiringPi/examples/max31855.c"
+                },
+                {
+                    "blank": 9,
+                    "code": 35,
+                    "comment": 23,
+                    "filename": "WiringPi/examples/nes.c"
+                },
+                {
+                    "blank": 12,
+                    "code": 38,
+                    "comment": 32,
+                    "filename": "WiringPi/examples/okLed.c"
+                },
+                {
+                    "blank": 11,
+                    "code": 20,
+                    "comment": 31,
+                    "filename": "WiringPi/examples/PiFace/blink.c"
+                },
+                {
+                    "blank": 23,
+                    "code": 40,
+                    "comment": 40,
+                    "filename": "WiringPi/examples/PiFace/buttons.c"
+                },
+                {
+                    "blank": 86,
+                    "code": 171,
+                    "comment": 86,
+                    "filename": "WiringPi/examples/PiFace/ladder.c"
+                },
+                {
+                    "blank": 19,
+                    "code": 69,
+                    "comment": 2,
+                    "filename": "WiringPi/examples/PiFace/Makefile"
+                },
+                {
+                    "blank": 24,
+                    "code": 57,
+                    "comment": 31,
+                    "filename": "WiringPi/examples/PiFace/metro.c"
+                },
+                {
+                    "blank": 26,
+                    "code": 68,
+                    "comment": 26,
+                    "filename": "WiringPi/examples/PiFace/motor.c"
+                },
+                {
+                    "blank": 39,
+                    "code": 114,
+                    "comment": 43,
+                    "filename": "WiringPi/examples/PiFace/reaction.c"
+                },
+                {
+                    "blank": 17,
+                    "code": 65,
+                    "comment": 2,
+                    "filename": "WiringPi/examples/PiGlow/Makefile"
+                },
+                {
+                    "blank": 24,
+                    "code": 120,
+                    "comment": 34,
+                    "filename": "WiringPi/examples/PiGlow/piglow.c"
+                },
+                {
+                    "blank": 7,
+                    "code": 18,
+                    "comment": 26,
+                    "filename": "WiringPi/examples/PiGlow/piGlow0.c"
+                },
+                {
+                    "blank": 44,
+                    "code": 157,
+                    "comment": 57,
+                    "filename": "WiringPi/examples/PiGlow/piGlow1.c"
+                },
+                {
+                    "blank": 9,
+                    "code": 26,
+                    "comment": 23,
+                    "filename": "WiringPi/examples/pwm.c"
+                },
+                {
+                    "blank": 18,
+                    "code": 29,
+                    "comment": 34,
+                    "filename": "WiringPi/examples/q2w/binary.c"
+                },
+                {
+                    "blank": 12,
+                    "code": 23,
+                    "comment": 26,
+                    "filename": "WiringPi/examples/q2w/blink-io.c"
+                },
+                {
+                    "blank": 9,
+                    "code": 17,
+                    "comment": 24,
+                    "filename": "WiringPi/examples/q2w/blink.c"
+                },
+                {
+                    "blank": 4,
+                    "code": 8,
+                    "comment": 25,
+                    "filename": "WiringPi/examples/q2w/blink.sh"
+                },
+                {
+                    "blank": 12,
+                    "code": 21,
+                    "comment": 26,
+                    "filename": "WiringPi/examples/q2w/bright.c"
+                },
+                {
+                    "blank": 10,
+                    "code": 29,
+                    "comment": 27,
+                    "filename": "WiringPi/examples/q2w/button.c"
+                },
+                {
+                    "blank": 19,
+                    "code": 65,
+                    "comment": 2,
+                    "filename": "WiringPi/examples/q2w/Makefile"
+                },
+                {
+                    "blank": 12,
+                    "code": 25,
+                    "comment": 27,
+                    "filename": "WiringPi/examples/q2w/volts.c"
+                },
+                {
+                    "blank": 2,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "WiringPi/examples/README.TXT"
+                },
+                {
+                    "blank": 18,
+                    "code": 40,
+                    "comment": 28,
+                    "filename": "WiringPi/examples/rht03.c"
+                },
+                {
+                    "blank": 17,
+                    "code": 62,
+                    "comment": 2,
+                    "filename": "WiringPi/examples/scrollPhat/Makefile"
+                },
+                {
+                    "blank": 44,
+                    "code": 120,
+                    "comment": 67,
+                    "filename": "WiringPi/examples/scrollPhat/scphat.c"
+                },
+                {
+                    "blank": 30,
+                    "code": 51,
+                    "comment": 34,
+                    "filename": "WiringPi/examples/scrollPhat/test.c"
+                },
+                {
+                    "blank": 6,
+                    "code": 18,
+                    "comment": 24,
+                    "filename": "WiringPi/examples/serialRead.c"
+                },
+                {
+                    "blank": 10,
+                    "code": 41,
+                    "comment": 24,
+                    "filename": "WiringPi/examples/serialTest.c"
+                },
+                {
+                    "blank": 7,
+                    "code": 17,
+                    "comment": 33,
+                    "filename": "WiringPi/examples/servo.c"
+                },
+                {
+                    "blank": 18,
+                    "code": 45,
+                    "comment": 26,
+                    "filename": "WiringPi/examples/softPwm.c"
+                },
+                {
+                    "blank": 8,
+                    "code": 22,
+                    "comment": 24,
+                    "filename": "WiringPi/examples/softTone.c"
+                },
+                {
+                    "blank": 18,
+                    "code": 49,
+                    "comment": 28,
+                    "filename": "WiringPi/examples/speed.c"
+                },
+                {
+                    "blank": 21,
+                    "code": 71,
+                    "comment": 26,
+                    "filename": "WiringPi/examples/spiSpeed.c"
+                },
+                {
+                    "blank": 40,
+                    "code": 57,
+                    "comment": 66,
+                    "filename": "WiringPi/examples/wfi.c"
+                },
+                {
+                    "blank": 28,
+                    "code": 84,
+                    "comment": 1,
+                    "filename": "WiringPi/gpio/COPYING.LESSER"
+                },
+                {
+                    "filename": "WiringPi/gpio/gpio",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 25,
+                    "code": 83,
+                    "comment": 0,
+                    "filename": "WiringPi/gpio/gpio.1"
+                },
+                {
+                    "blank": 359,
+                    "code": 937,
+                    "comment": 260,
+                    "filename": "WiringPi/gpio/gpio.c"
+                },
+                {
+                    "filename": "WiringPi/gpio/gpio.o",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 19,
+                    "code": 84,
+                    "comment": 2,
+                    "filename": "WiringPi/gpio/Makefile"
+                },
+                {
+                    "blank": 5,
+                    "code": 27,
+                    "comment": 0,
+                    "filename": "WiringPi/gpio/pintest"
+                },
+                {
+                    "blank": 67,
+                    "code": 256,
+                    "comment": 88,
+                    "filename": "WiringPi/gpio/readall.c"
+                },
+                {
+                    "filename": "WiringPi/gpio/readall.o",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 4,
+                    "code": 17,
+                    "comment": 23,
+                    "filename": "WiringPi/gpio/test.sh"
+                },
+                {
+                    "blank": 13,
+                    "code": 16,
+                    "comment": 1,
+                    "filename": "WiringPi/INSTALL"
+                },
+                {
+                    "blank": 3,
+                    "code": 44,
+                    "comment": 1,
+                    "filename": "WiringPi/newVersion"
+                },
+                {
+                    "blank": 1,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "WiringPi/People"
+                },
+                {
+                    "blank": 8,
+                    "code": 14,
+                    "comment": 0,
+                    "filename": "WiringPi/pins/Makefile"
+                },
+                {
+                    "filename": "WiringPi/pins/pins.pdf",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 3,
+                    "code": 82,
+                    "comment": 1,
+                    "filename": "WiringPi/pins/pins.tex"
+                },
+                {
+                    "blank": 5,
+                    "code": 14,
+                    "comment": 3,
+                    "filename": "WiringPi/README.md"
+                },
+                {
+                    "blank": 2,
+                    "code": 3,
+                    "comment": 0,
+                    "filename": "WiringPi/update"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "WiringPi/VERSION"
+                },
+                {
+                    "blank": 0,
+                    "code": 3,
+                    "comment": 0,
+                    "filename": "WiringPi/version.h"
+                },
+                {
+                    "blank": 69,
+                    "code": 144,
+                    "comment": 123,
+                    "filename": "WiringPi/wiringPi/ads1115.c"
+                },
+                {
+                    "blank": 8,
+                    "code": 21,
+                    "comment": 26,
+                    "filename": "WiringPi/wiringPi/ads1115.h"
+                },
+                {
+                    "filename": "WiringPi/wiringPi/ads1115.o",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 54,
+                    "code": 113,
+                    "comment": 74,
+                    "filename": "WiringPi/wiringPi/bmp180.c"
+                },
+                {
+                    "blank": 3,
+                    "code": 7,
+                    "comment": 24,
+                    "filename": "WiringPi/wiringPi/bmp180.h"
+                },
+                {
+                    "filename": "WiringPi/wiringPi/bmp180.o",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 28,
+                    "code": 84,
+                    "comment": 1,
+                    "filename": "WiringPi/wiringPi/COPYING.LESSER"
+                },
+                {
+                    "blank": 86,
+                    "code": 190,
+                    "comment": 134,
+                    "filename": "WiringPi/wiringPi/drcNet.c"
+                },
+                {
+                    "blank": 4,
+                    "code": 7,
+                    "comment": 31,
+                    "filename": "WiringPi/wiringPi/drcNet.h"
+                },
+                {
+                    "filename": "WiringPi/wiringPi/drcNet.o",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 39,
+                    "code": 99,
+                    "comment": 66,
+                    "filename": "WiringPi/wiringPi/drcSerial.c"
+                },
+                {
+                    "blank": 3,
+                    "code": 7,
+                    "comment": 23,
+                    "filename": "WiringPi/wiringPi/drcSerial.h"
+                },
+                {
+                    "filename": "WiringPi/wiringPi/drcSerial.o",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 37,
+                    "code": 63,
+                    "comment": 48,
+                    "filename": "WiringPi/wiringPi/ds18b20.c"
+                },
+                {
+                    "blank": 3,
+                    "code": 7,
+                    "comment": 24,
+                    "filename": "WiringPi/wiringPi/ds18b20.h"
+                },
+                {
+                    "filename": "WiringPi/wiringPi/ds18b20.o",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 35,
+                    "code": 73,
+                    "comment": 45,
+                    "filename": "WiringPi/wiringPi/htu21d.c"
+                },
+                {
+                    "blank": 3,
+                    "code": 7,
+                    "comment": 24,
+                    "filename": "WiringPi/wiringPi/htu21d.h"
+                },
+                {
+                    "filename": "WiringPi/wiringPi/htu21d.o",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "WiringPi/wiringPi/libwiringPi.so.2.60",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 25,
+                    "code": 140,
+                    "comment": 2,
+                    "filename": "WiringPi/wiringPi/Makefile"
+                },
+                {
+                    "blank": 22,
+                    "code": 48,
+                    "comment": 41,
+                    "filename": "WiringPi/wiringPi/max31855.c"
+                },
+                {
+                    "blank": 3,
+                    "code": 7,
+                    "comment": 23,
+                    "filename": "WiringPi/wiringPi/max31855.h"
+                },
+                {
+                    "filename": "WiringPi/wiringPi/max31855.o",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 17,
+                    "code": 32,
+                    "comment": 36,
+                    "filename": "WiringPi/wiringPi/max5322.c"
+                },
+                {
+                    "blank": 3,
+                    "code": 7,
+                    "comment": 23,
+                    "filename": "WiringPi/wiringPi/max5322.h"
+                },
+                {
+                    "filename": "WiringPi/wiringPi/max5322.o",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 35,
+                    "code": 68,
+                    "comment": 46,
+                    "filename": "WiringPi/wiringPi/mcp23008.c"
+                },
+                {
+                    "blank": 3,
+                    "code": 7,
+                    "comment": 23,
+                    "filename": "WiringPi/wiringPi/mcp23008.h"
+                },
+                {
+                    "filename": "WiringPi/wiringPi/mcp23008.o",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 36,
+                    "code": 86,
+                    "comment": 47,
+                    "filename": "WiringPi/wiringPi/mcp23016.c"
+                },
+                {
+                    "blank": 3,
+                    "code": 7,
+                    "comment": 23,
+                    "filename": "WiringPi/wiringPi/mcp23016.h"
+                },
+                {
+                    "filename": "WiringPi/wiringPi/mcp23016.o",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 6,
+                    "code": 14,
+                    "comment": 28,
+                    "filename": "WiringPi/wiringPi/mcp23016reg.h"
+                },
+                {
+                    "blank": 44,
+                    "code": 105,
+                    "comment": 52,
+                    "filename": "WiringPi/wiringPi/mcp23017.c"
+                },
+                {
+                    "blank": 3,
+                    "code": 7,
+                    "comment": 23,
+                    "filename": "WiringPi/wiringPi/mcp23017.h"
+                },
+                {
+                    "filename": "WiringPi/wiringPi/mcp23017.o",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 47,
+                    "code": 85,
+                    "comment": 56,
+                    "filename": "WiringPi/wiringPi/mcp23s08.c"
+                },
+                {
+                    "blank": 3,
+                    "code": 7,
+                    "comment": 23,
+                    "filename": "WiringPi/wiringPi/mcp23s08.h"
+                },
+                {
+                    "filename": "WiringPi/wiringPi/mcp23s08.o",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 56,
+                    "code": 123,
+                    "comment": 62,
+                    "filename": "WiringPi/wiringPi/mcp23s17.c"
+                },
+                {
+                    "blank": 3,
+                    "code": 7,
+                    "comment": 23,
+                    "filename": "WiringPi/wiringPi/mcp23s17.h"
+                },
+                {
+                    "filename": "WiringPi/wiringPi/mcp23s17.o",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 10,
+                    "code": 33,
+                    "comment": 30,
+                    "filename": "WiringPi/wiringPi/mcp23x08.h"
+                },
+                {
+                    "blank": 11,
+                    "code": 44,
+                    "comment": 32,
+                    "filename": "WiringPi/wiringPi/mcp23x0817.h"
+                },
+                {
+                    "blank": 15,
+                    "code": 27,
+                    "comment": 34,
+                    "filename": "WiringPi/wiringPi/mcp3002.c"
+                },
+                {
+                    "blank": 3,
+                    "code": 7,
+                    "comment": 23,
+                    "filename": "WiringPi/wiringPi/mcp3002.h"
+                },
+                {
+                    "filename": "WiringPi/wiringPi/mcp3002.o",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 15,
+                    "code": 25,
+                    "comment": 37,
+                    "filename": "WiringPi/wiringPi/mcp3004.c"
+                },
+                {
+                    "blank": 3,
+                    "code": 7,
+                    "comment": 23,
+                    "filename": "WiringPi/wiringPi/mcp3004.h"
+                },
+                {
+                    "filename": "WiringPi/wiringPi/mcp3004.o",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 24,
+                    "code": 60,
+                    "comment": 46,
+                    "filename": "WiringPi/wiringPi/mcp3422.c"
+                },
+                {
+                    "blank": 6,
+                    "code": 15,
+                    "comment": 22,
+                    "filename": "WiringPi/wiringPi/mcp3422.h"
+                },
+                {
+                    "filename": "WiringPi/wiringPi/mcp3422.o",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 14,
+                    "code": 28,
+                    "comment": 34,
+                    "filename": "WiringPi/wiringPi/mcp4802.c"
+                },
+                {
+                    "blank": 3,
+                    "code": 7,
+                    "comment": 23,
+                    "filename": "WiringPi/wiringPi/mcp4802.h"
+                },
+                {
+                    "filename": "WiringPi/wiringPi/mcp4802.o",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 3,
+                    "code": 8,
+                    "comment": 0,
+                    "filename": "WiringPi/wiringPi/noMoreStatic"
+                },
+                {
+                    "blank": 28,
+                    "code": 53,
+                    "comment": 47,
+                    "filename": "WiringPi/wiringPi/pcf8574.c"
+                },
+                {
+                    "blank": 3,
+                    "code": 7,
+                    "comment": 23,
+                    "filename": "WiringPi/wiringPi/pcf8574.h"
+                },
+                {
+                    "filename": "WiringPi/wiringPi/pcf8574.o",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 19,
+                    "code": 31,
+                    "comment": 41,
+                    "filename": "WiringPi/wiringPi/pcf8591.c"
+                },
+                {
+                    "blank": 3,
+                    "code": 7,
+                    "comment": 23,
+                    "filename": "WiringPi/wiringPi/pcf8591.h"
+                },
+                {
+                    "filename": "WiringPi/wiringPi/pcf8591.o",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 8,
+                    "code": 13,
+                    "comment": 30,
+                    "filename": "WiringPi/wiringPi/piHiPri.c"
+                },
+                {
+                    "filename": "WiringPi/wiringPi/piHiPri.o",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 11,
+                    "code": 16,
+                    "comment": 36,
+                    "filename": "WiringPi/wiringPi/piThread.c"
+                },
+                {
+                    "filename": "WiringPi/wiringPi/piThread.o",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 20,
+                    "code": 37,
+                    "comment": 38,
+                    "filename": "WiringPi/wiringPi/pseudoPins.c"
+                },
+                {
+                    "blank": 1,
+                    "code": 1,
+                    "comment": 24,
+                    "filename": "WiringPi/wiringPi/pseudoPins.h"
+                },
+                {
+                    "filename": "WiringPi/wiringPi/pseudoPins.o",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 60,
+                    "code": 118,
+                    "comment": 78,
+                    "filename": "WiringPi/wiringPi/rht03.c"
+                },
+                {
+                    "blank": 1,
+                    "code": 1,
+                    "comment": 23,
+                    "filename": "WiringPi/wiringPi/rht03.h"
+                },
+                {
+                    "filename": "WiringPi/wiringPi/rht03.o",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 13,
+                    "code": 26,
+                    "comment": 43,
+                    "filename": "WiringPi/wiringPi/sn3218.c"
+                },
+                {
+                    "blank": 3,
+                    "code": 7,
+                    "comment": 23,
+                    "filename": "WiringPi/wiringPi/sn3218.h"
+                },
+                {
+                    "filename": "WiringPi/wiringPi/sn3218.o",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 38,
+                    "code": 85,
+                    "comment": 62,
+                    "filename": "WiringPi/wiringPi/softPwm.c"
+                },
+                {
+                    "blank": 3,
+                    "code": 9,
+                    "comment": 23,
+                    "filename": "WiringPi/wiringPi/softPwm.h"
+                },
+                {
+                    "filename": "WiringPi/wiringPi/softPwm.o",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 39,
+                    "code": 98,
+                    "comment": 80,
+                    "filename": "WiringPi/wiringPi/softServo.c"
+                },
+                {
+                    "blank": 3,
+                    "code": 8,
+                    "comment": 24,
+                    "filename": "WiringPi/wiringPi/softServo.h"
+                },
+                {
+                    "blank": 34,
+                    "code": 69,
+                    "comment": 49,
+                    "filename": "WiringPi/wiringPi/softTone.c"
+                },
+                {
+                    "blank": 3,
+                    "code": 9,
+                    "comment": 27,
+                    "filename": "WiringPi/wiringPi/softTone.h"
+                },
+                {
+                    "filename": "WiringPi/wiringPi/softTone.o",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 22,
+                    "code": 48,
+                    "comment": 42,
+                    "filename": "WiringPi/wiringPi/sr595.c"
+                },
+                {
+                    "blank": 3,
+                    "code": 8,
+                    "comment": 23,
+                    "filename": "WiringPi/wiringPi/sr595.h"
+                },
+                {
+                    "filename": "WiringPi/wiringPi/sr595.o",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 498,
+                    "code": 1360,
+                    "comment": 840,
+                    "filename": "WiringPi/wiringPi/wiringPi.c"
+                },
+                {
+                    "blank": 63,
+                    "code": 141,
+                    "comment": 70,
+                    "filename": "WiringPi/wiringPi/wiringPi.h"
+                },
+                {
+                    "filename": "WiringPi/wiringPi/wiringPi.o",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 46,
+                    "code": 107,
+                    "comment": 81,
+                    "filename": "WiringPi/wiringPi/wiringPiI2C.c"
+                },
+                {
+                    "blank": 5,
+                    "code": 14,
+                    "comment": 23,
+                    "filename": "WiringPi/wiringPi/wiringPiI2C.h"
+                },
+                {
+                    "filename": "WiringPi/wiringPi/wiringPiI2C.o",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 35,
+                    "code": 54,
+                    "comment": 56,
+                    "filename": "WiringPi/wiringPi/wiringPiSPI.c"
+                },
+                {
+                    "blank": 3,
+                    "code": 10,
+                    "comment": 23,
+                    "filename": "WiringPi/wiringPi/wiringPiSPI.h"
+                },
+                {
+                    "filename": "WiringPi/wiringPi/wiringPiSPI.o",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 45,
+                    "code": 115,
+                    "comment": 67,
+                    "filename": "WiringPi/wiringPi/wiringSerial.c"
+                },
+                {
+                    "blank": 3,
+                    "code": 14,
+                    "comment": 21,
+                    "filename": "WiringPi/wiringPi/wiringSerial.h"
+                },
+                {
+                    "filename": "WiringPi/wiringPi/wiringSerial.o",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 9,
+                    "code": 41,
+                    "comment": 33,
+                    "filename": "WiringPi/wiringPi/wiringShift.c"
+                },
+                {
+                    "blank": 5,
+                    "code": 13,
+                    "comment": 23,
+                    "filename": "WiringPi/wiringPi/wiringShift.h"
+                },
+                {
+                    "filename": "WiringPi/wiringPi/wiringShift.o",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 220,
+                    "code": 510,
+                    "comment": 203,
+                    "filename": "WiringPi/wiringPi/wpiExtensions.c"
+                },
+                {
+                    "blank": 2,
+                    "code": 1,
+                    "comment": 23,
+                    "filename": "WiringPi/wiringPi/wpiExtensions.h"
+                },
+                {
+                    "filename": "WiringPi/wiringPi/wpiExtensions.o",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 20,
+                    "code": 49,
+                    "comment": 15,
+                    "filename": "WiringPi/wiringPiD/daemonise.c"
+                },
+                {
+                    "blank": 1,
+                    "code": 1,
+                    "comment": 7,
+                    "filename": "WiringPi/wiringPiD/daemonise.h"
+                },
+                {
+                    "blank": 7,
+                    "code": 16,
+                    "comment": 21,
+                    "filename": "WiringPi/wiringPiD/drcNetCmd.h"
+                },
+                {
+                    "blank": 18,
+                    "code": 82,
+                    "comment": 2,
+                    "filename": "WiringPi/wiringPiD/Makefile"
+                },
+                {
+                    "blank": 82,
+                    "code": 170,
+                    "comment": 82,
+                    "filename": "WiringPi/wiringPiD/network.c"
+                },
+                {
+                    "blank": 1,
+                    "code": 8,
+                    "comment": 22,
+                    "filename": "WiringPi/wiringPiD/network.h"
+                },
+                {
+                    "blank": 22,
+                    "code": 78,
+                    "comment": 27,
+                    "filename": "WiringPi/wiringPiD/runRemote.c"
+                },
+                {
+                    "blank": 3,
+                    "code": 2,
+                    "comment": 24,
+                    "filename": "WiringPi/wiringPiD/runRemote.h"
+                },
+                {
+                    "blank": 84,
+                    "code": 241,
+                    "comment": 57,
+                    "filename": "WiringPi/wiringPiD/wiringpid.c"
+                }
+            ]
+        }
+    ]
+}

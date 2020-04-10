@@ -1,0 +1,381 @@
+<html>
+
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+
+    <style>
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        input:checked+.slider {
+            background-color: #2196F3;
+        }
+
+        input:focus+.slider {
+            box-shadow: 0 0 1px #2196F3;
+        }
+
+        input:checked+.slider:before {
+            -webkit-transform: translateX(26px);
+            -ms-transform: translateX(26px);
+            transform: translateX(26px);
+        }
+
+        /* Rounded sliders */
+        .slider.round {
+            border-radius: 34px;
+        }
+
+        .slider.round:before {
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<link rel="shortcut icon" type="image/png" href="favicon.png"/>
+
+<body onload="getJson()">
+    <div align='center'>
+
+        <h2>Bewässerungsanlage</h2>
+        <h3>Pflanzen</h3>
+        <ul>
+            <li id="plant1">{{plant1}}</li>
+            <li id="plant2">{{plant1}}</li>
+            <li id="plant3">{{plant1}}</li>
+            <li id="plant4">{{plant1}}</li>
+            <li id="plant5">{{plant1}}</li>
+            <li id="plant6">{{plant1}}</li>
+        </ul>
+        <button type="button" onclick="changePlaceholer()" class="btn btn-secondary" data-toggle="modal"
+            data-target="#exampleModal">Pflanzennamen
+            ändern</button>
+        <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Pflanzennamen ändern</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group row">
+                                <label for="inputPassword" class="col-sm-2 col-form-label">1. Pflanze</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="plant1Changer" placeholder="">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="inputPassword" class="col-sm-2 col-form-label">2. Pflanze</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="plant2Changer" placeholder="Knoblauch">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="inputPassword" class="col-sm-2 col-form-label">3. Pflanze</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="plant3Changer" placeholder="Knoblauch">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="inputPassword" class="col-sm-2 col-form-label">4. Pflanze</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="plant4Changer" placeholder="Knoblauch">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="inputPassword" class="col-sm-2 col-form-label">5. Pflanze</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="plant5Changer" placeholder="Knoblauch">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="inputPassword" class="col-sm-2 col-form-label">6. Pflanze</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="plant6Changer" placeholder="Knoblauch">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="inputPassword" class="col-sm-2 col-form-label">7. Pflanze</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="plant7Changer" placeholder="Knoblauch">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" onclick="setDefault()">Zurücksetzen</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Schließen</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="changePlantNames()">Ändern</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        Wasserpumpe:
+        <br>
+        AUS <label class="switch">
+            <input type="checkbox" id="valve" onclick="changeValve()">
+            <span class="slider round"></span>
+        </label> AN
+        <br>
+        Gartenübersicht:
+        <br>
+        <img src='/static/AllPlantsOk.svg' id="gardenPic">
+        <br>
+        <br>
+        <h3>Wetter</h3>
+        Temperatur: {{temperatur}}°C
+        <br>
+        Luftfeuchtigkeit: {{humidity}}%
+        <br>
+        Regen: {{rain}}
+
+        <form action="/wheaterData">
+            <button type="submit" class="btn btn-secondary">Wetterstatistiken</button>
+        </form>
+
+        <script>
+
+            var jsonData;
+            var plantNames;
+            var plantStatus = [];
+
+            function getJson() {
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        jsonData = JSON.parse(this.responseText);
+                        if (jsonData.data[0].valve === "aus") {
+                            $("#valve").prop("checked", false);
+                        }
+                        else {
+                            $("#valve").prop("checked", true);
+                        }
+                    }
+                };
+                xmlhttp.open("GET", "data.json", true);
+                xmlhttp.send();
+                getPlantNames();
+            }
+
+            //get and set PlantNames
+            function getPlantNames() {
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        plantNames = JSON.parse(this.responseText);
+                        var p1 = document.getElementById("plant1");
+                        plantStatus.push(p1.innerHTML);
+                        p1.innerHTML = plantNames[0].plant1 + ": " + p1.innerHTML;
+                        var p2 = document.getElementById("plant2");
+                        plantStatus.push(p2.innerHTML);
+                        p2.innerHTML = plantNames[0].plant2 + ": " + p2.innerHTML;
+                        var p3 = document.getElementById("plant3");
+                        plantStatus.push(p3.innerHTML);
+                        p3.innerHTML = plantNames[0].plant3 + ": " + p3.innerHTML;
+                        var p4 = document.getElementById("plant4");
+                        plantStatus.push(p4.innerHTML);
+                        p4.innerHTML = plantNames[0].plant4 + ": " + p4.innerHTML;
+                        var p5 = document.getElementById("plant5");
+                        plantStatus.push(p5.innerHTML);
+                        p5.innerHTML = plantNames[0].plant5 + ": " + p5.innerHTML;
+                        var p6 = document.getElementById("plant6");
+                        plantStatus.push(p6.innerHTML);
+                        p6.innerHTML = plantNames[0].plant6 + ": " + p6.innerHTML;
+                        var p7 = document.getElementById("plant7");
+                        plantStatus.push(p7.innerHTML);
+                        p17.innerHTML = plantNames[0].plant7 + ": " + p71.innerHTML;
+                    }
+                };
+                xmlhttp.open("GET", "plantNames.json", true);
+                xmlhttp.send();
+            }
+
+            function updatePlantNamesJson() {
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        plantNames = JSON.parse(this.responseText);
+                    }
+                };
+                xmlhttp.open("GET", "plantNames.json", true);
+                xmlhttp.send();
+            }
+
+            function changePlaceholer() {
+                updatePlantNamesJson();
+                var p1Changer = document.getElementById("plant1Changer");
+                p1Changer.value = "";
+                p1Changer.setAttribute("placeholder", plantNames[0].plant1);
+                var p2Changer = document.getElementById("plant2Changer");
+                p2Changer.value = "";
+                p2Changer.setAttribute("placeholder", plantNames[0].plant2);
+                var p3Changer = document.getElementById("plant3Changer");
+                p3Changer.value = "";
+                p3Changer.setAttribute("placeholder", plantNames[0].plant3);
+                var p4Changer = document.getElementById("plant4Changer");
+                p4Changer.value = "";
+                p4Changer.setAttribute("placeholder", plantNames[0].plant4);
+                var p5Changer = document.getElementById("plant5Changer");
+                p5Changer.value = "";
+                p5Changer.setAttribute("placeholder", plantNames[0].plant5);
+                var p6Changer = document.getElementById("plant6Changer");
+                p6Changer.value = "";
+                p6Changer.setAttribute("placeholder", plantNames[0].plant6);
+                var p7Changer = document.getElementById("plant7Changer");
+                p7Changer.value = "";
+                p7Changer.setAttribute("placeholder", plantNames[0].plant7);
+            }
+
+            function setDefault() {
+                var p1Changer = document.getElementById("plant1Changer");
+                p1Changer.setAttribute("placeholder", "Blumen");
+                var p2Changer = document.getElementById("plant2Changer");
+                p2Changer.setAttribute("placeholder", "Lavendel");
+                var p3Changer = document.getElementById("plant3Changer");
+                p3Changer.setAttribute("placeholder", "Knoblauch");
+                var p4Changer = document.getElementById("plant4Changer");
+                p4Changer.setAttribute("placeholder", "Chillis");
+                var p5Changer = document.getElementById("plant5Changer");
+                p5Changer.setAttribute("placeholder", "Erdbeeren");
+                var p6Changer = document.getElementById("plant6Changer");
+                p6Changer.setAttribute("placeholder", "Birnbaum");
+                var p7Changer = document.getElementById("plant7Changer");
+                p7Changer.setAttribute("placeholder", "Kraeuterbeet");
+            }
+
+            function changePlantNames() {
+                var p1Changer = document.getElementById("plant1Changer");
+                var p2Changer = document.getElementById("plant2Changer");
+                var p3Changer = document.getElementById("plant3Changer");
+                var p4Changer = document.getElementById("plant4Changer");
+                var p5Changer = document.getElementById("plant5Changer");
+                var p6Changer = document.getElementById("plant6Changer");
+                var p7Changer = document.getElementById("plant7Changer");
+                var p1Name = p1Changer.value;
+                if (p1Name === "") p1Name = p1Changer.placeholder;
+                var p2Name = p2Changer.value;
+                if (p2Name === "") p2Name = p2Changer.placeholder;
+                var p3Name = p3Changer.value;
+                if (p3Name === "") p3Name = p3Changer.placeholder;
+                var p4Name = p4Changer.value;
+                if (p4Name === "") p4Name = p4Changer.placeholder;
+                var p5Name = p5Changer.value;
+                if (p5Name === "") p5Name = p5Changer.placeholder;
+                var p6Name = p6Changer.value;
+                if (p6Name === "") p6Name = p6Changer.placeholder;
+                var p7Name = p7Changer.value;
+                if (p7Name === "") p7Name = p7Changer.placeholder;
+                var xhr = new XMLHttpRequest();
+                    xhr.open('GET', "/plantNames?plant1=" + p1Name + "&plant2=" + p2Name + "&plant3=" + p3Name + 
+                    "&plant4=" + p4Name + "&plant5=" + p5Name + "&plant6=" + p6Name + "&plant7=" + p7Name, true);
+                    xhr.onload = function () {
+                        var status = xhr.status;
+                        if (status === 200) {
+                            callback(null, xhr.response);
+                        } else {
+                            callback(status, xhr.response);
+                        }
+                    };
+                    xhr.send();
+                var p1 = document.getElementById("plant1");
+                var p2 = document.getElementById("plant2");
+                var p3 = document.getElementById("plant3");
+                var p4 = document.getElementById("plant4");
+                var p5 = document.getElementById("plant5");
+                var p6 = document.getElementById("plant6");
+                var p7 = document.getElementById("plant7");
+                p1.innerHTML = p1Name + ": " + plantStatus[0];
+                p2.innerHTML = p2Name + ": " + plantStatus[1];
+                p3.innerHTML = p3Name + ": " + plantStatus[2];
+                p4.innerHTML = p4Name + ": " + plantStatus[3];
+                p5.innerHTML = p5Name + ": " + plantStatus[4];
+                p6.innerHTML = p6Name + ": " + plantStatus[5];
+                p7.innerHTML = p7Name + ": " + plantStatus[6];
+                $('#exampleModal').modal('hide');
+            }
+
+            function changeValve() {
+                var svg = document.getElementById("gardenPic")
+                var checkBox = document.getElementById("valve");
+                if (checkBox.checked == true) {
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('GET', "/v?valve=on", true);
+                    xhr.onload = function () {
+                        var status = xhr.status;
+                        if (status === 200) {
+                            callback(null, xhr.response);
+                        } else {
+                            callback(status, xhr.response);
+                        }
+                    };
+                    xhr.send();
+                } else {
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('GET', "/v?valve=off", true);
+                    xhr.onload = function () {
+                        var status = xhr.status;
+                        if (status === 200) {
+                            callback(null, xhr.response);
+                        } else {
+                            callback(status, xhr.response);
+                        }
+                    };
+                    xhr.send();
+                }
+            }
+        </script>
+    </div>
+</body>
+
+</html>

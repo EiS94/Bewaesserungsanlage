@@ -1,0 +1,317 @@
+===============================================================================
+EXTENSION NAME : linecounter
+EXTENSION VERSION : 0.2.7
+-------------------------------------------------------------------------------
+count time : 2020-03-12 21:15:10
+count workspace : /home/pi/Bewaesserung
+total files : 281
+total code lines : 16026
+total comment lines : 8076
+total blank lines : 5390
+
+    statistics
+   |      extension|     total code|  total comment|    total blank|percent|
+   -------------------------------------------------------------------------
+   |            .py|            444|             45|             80|    2.8|
+   |           .txt|             60|              0|              0|   0.37|
+   |          .json|             13|              0|              0|  0.081|
+   |          .html|            323|              0|             28|    2.0|
+   |             .h|           3010|           1878|            636|     19|
+   |           .xml|            127|              0|              0|   0.79|
+   |               |           1128|             22|            273|    7.0|
+   |           .svg|             46|              0|              0|   0.29|
+   |           .iml|             20|              0|              0|   0.12|
+   |        .LESSER|            336|              4|            112|    2.1|
+   |            .md|             14|              3|              5|  0.087|
+   |           .tex|             82|              1|              3|   0.51|
+   |          .dirs|              3|              0|              0|  0.019|
+   |             .c|          10282|           6024|           4214|     64|
+   |       .install|              7|              2|              0|  0.044|
+   |        .shlibs|              2|              0|              0|  0.012|
+   |             .1|             83|              0|             25|   0.52|
+   |           .rtb|              9|             24|              0|  0.056|
+   |            .sh|             33|             73|             12|   0.21|
+   |           .TXT|              4|              0|              2|  0.025|
+   -------------------------------------------------------------------------
+.idea/inspectionProfiles/profiles_settings.xml, code is 6, comment is 0, blank is 0.
+.idea/jsLibraryMappings.xml, code is 6, comment is 0, blank is 0.
+.idea/misc.xml, code is 7, comment is 0, blank is 0.
+.idea/modules.xml, code is 8, comment is 0, blank is 0.
+.idea/remote.iml, code is 20, comment is 0, blank is 0.
+.idea/vcs.xml, code is 6, comment is 0, blank is 0.
+.idea/workspace.xml, code is 94, comment is 0, blank is 0.
+__pycache__/jsonDataReader.cpython-37.pyc, it is a binary file.
+__pycache__/JsonWriter.cpython-37.pyc, it is a binary file.
+__pycache__/plantNamesWriter.cpython-37.pyc, it is a binary file.
+__pycache__/temperaturData.cpython-37.pyc, it is a binary file.
+__pycache__/test.cpython-37.pyc, it is a binary file.
+__pycache__/ValveHandler.cpython-37.pyc, it is a binary file.
+__pycache__/wheaterData.cpython-37.pyc, it is a binary file.
+analog.py, code is 8, comment is 0, blank is 1.
+data.json, code is 1, comment is 0, blank is 0.
+data/wheater.txt, code is 30, comment is 0, blank is 0.
+jsonDataReader.py, code is 26, comment is 0, blank is 3.
+JsonWriter.py, code is 116, comment is 3, blank is 23.
+JsonWriter.pyc, it is a binary file.
+package-lock.json, code is 11, comment is 0, blank is 0.
+plantNames.json, code is 1, comment is 0, blank is 0.
+plantNamesWriter.py, code is 36, comment is 0, blank is 6.
+Server.py, code is 155, comment is 28, blank is 29.
+static/AllPlantsOk.svg, code is 46, comment is 0, blank is 0.
+templates/index.html, code is 223, comment is 0, blank is 19.
+templates/test.html, code is 49, comment is 0, blank is 5.
+templates/wheaterData.html, code is 51, comment is 0, blank is 4.
+test.py, code is 20, comment is 0, blank is 3.
+ValveHandler.py, code is 51, comment is 11, blank is 11.
+wheater.txt, code is 30, comment is 0, blank is 0.
+wheaterData.py, code is 32, comment is 3, blank is 4.
+WiringPi/.gitignore, code is 7, comment is 0, blank is 0.
+WiringPi/build, code is 28, comment is 1, blank is 1.
+WiringPi/COPYING.LESSER, code is 84, comment is 1, blank is 28.
+WiringPi/debian-template/wiringPi/DEBIAN/control, code is 10, comment is 0, blank is 0.
+WiringPi/debian-template/wiringPi/DEBIAN/postinst, code is 5, comment is 0, blank is 0.
+WiringPi/debian-template/wiringPi/DEBIAN/postrm, code is 2, comment is 0, blank is 0.
+WiringPi/debian/.gitignore, code is 9, comment is 0, blank is 0.
+WiringPi/debian/changelog, code is 3, comment is 0, blank is 3.
+WiringPi/debian/compat, code is 1, comment is 0, blank is 0.
+WiringPi/debian/control, code is 26, comment is 1, blank is 3.
+WiringPi/debian/copyright, code is 12, comment is 0, blank is 3.
+WiringPi/debian/libwiringpi-dev.dirs, code is 2, comment is 0, blank is 0.
+WiringPi/debian/libwiringpi-dev.install, code is 2, comment is 2, blank is 0.
+WiringPi/debian/libwiringpi2.install, code is 1, comment is 0, blank is 0.
+WiringPi/debian/libwiringpi2.shlibs, code is 2, comment is 0, blank is 0.
+WiringPi/debian/rules, code is 38, comment is 0, blank is 11.
+WiringPi/debian/wiringpi.dirs, code is 1, comment is 0, blank is 0.
+WiringPi/debian/wiringpi.install, code is 4, comment is 0, blank is 0.
+WiringPi/devLib/ds1302.c, code is 113, comment is 75, blank is 54.
+WiringPi/devLib/ds1302.h, code is 14, comment is 23, blank is 7.
+WiringPi/devLib/ds1302.o, it is a binary file.
+WiringPi/devLib/font.h, code is 2053, comment is 266, blank is 258.
+WiringPi/devLib/gertboard.c, code is 66, comment is 62, blank is 36.
+WiringPi/devLib/gertboard.h, code is 10, comment is 29, blank is 6.
+WiringPi/devLib/gertboard.o, it is a binary file.
+WiringPi/devLib/lcd.c, code is 272, comment is 121, blank is 106.
+WiringPi/devLib/lcd.h, code is 22, comment is 25, blank is 5.
+WiringPi/devLib/lcd.o, it is a binary file.
+WiringPi/devLib/lcd128x64.c, code is 391, comment is 156, blank is 133.
+WiringPi/devLib/lcd128x64.h, code is 15, comment is 22, blank is 2.
+WiringPi/devLib/lcd128x64.o, it is a binary file.
+WiringPi/devLib/libwiringPiDev.so.2.60, it is a binary file.
+WiringPi/devLib/Makefile, code is 114, comment is 2, blank is 26.
+WiringPi/devLib/maxdetect.c, code is 113, comment is 73, blank is 56.
+WiringPi/devLib/maxdetect.h, code is 8, comment is 25, blank is 7.
+WiringPi/devLib/maxdetect.o, it is a binary file.
+WiringPi/devLib/piFace.c, code is 36, comment is 56, blank is 22.
+WiringPi/devLib/piFace.h, code is 7, comment is 22, blank is 3.
+WiringPi/devLib/piFace.o, it is a binary file.
+WiringPi/devLib/piFaceOld.c, code is 75, comment is 63, blank is 43.
+WiringPi/devLib/piGlow.c, code is 53, comment is 45, blank is 22.
+WiringPi/devLib/piGlow.h, code is 16, comment is 23, blank is 6.
+WiringPi/devLib/piGlow.o, it is a binary file.
+WiringPi/devLib/piNes.c, code is 48, comment is 37, blank is 28.
+WiringPi/devLib/piNes.h, code is 17, comment is 23, blank is 5.
+WiringPi/devLib/piNes.o, it is a binary file.
+WiringPi/devLib/scrollPhat.c, code is 227, comment is 111, blank is 95.
+WiringPi/devLib/scrollPhat.h, code is 12, comment is 24, blank is 3.
+WiringPi/devLib/scrollPhat.o, it is a binary file.
+WiringPi/devLib/scrollPhatFont.h, code is 324, comment is 410, blank is 130.
+WiringPi/examples/blink-thread.c, code is 26, comment is 28, blank is 10.
+WiringPi/examples/blink.c, code is 17, comment is 28, blank is 6.
+WiringPi/examples/blink.rtb, code is 9, comment is 24, blank is 0.
+WiringPi/examples/blink.sh, code is 8, comment is 25, blank is 4.
+WiringPi/examples/blink12.c, code is 65, comment is 34, blank is 19.
+WiringPi/examples/blink12drcs.c, code is 75, comment is 36, blank is 22.
+WiringPi/examples/blink6drcs.c, code is 63, comment is 37, blank is 24.
+WiringPi/examples/blink8-drcn.c, code is 28, comment is 25, blank is 8.
+WiringPi/examples/blink8.c, code is 26, comment is 24, blank is 7.
+WiringPi/examples/clock.c, code is 118, comment is 49, blank is 38.
+WiringPi/examples/COPYING.LESSER, code is 84, comment is 1, blank is 28.
+WiringPi/examples/delayTest.c, code is 59, comment is 28, blank is 17.
+WiringPi/examples/ds1302.c, code is 141, comment is 54, blank is 52.
+WiringPi/examples/Gertboard/7segments.c, code is 121, comment is 76, blank is 46.
+WiringPi/examples/Gertboard/buttons.c, code is 35, comment is 36, blank is 15.
+WiringPi/examples/Gertboard/gertboard.c, code is 37, comment is 39, blank is 20.
+WiringPi/examples/Gertboard/Makefile, code is 58, comment is 0, blank is 20.
+WiringPi/examples/Gertboard/record.c, code is 29, comment is 10, blank is 21.
+WiringPi/examples/Gertboard/temperature.c, code is 26, comment is 32, blank is 20.
+WiringPi/examples/Gertboard/voltmeter.c, code is 25, comment is 30, blank is 18.
+WiringPi/examples/Gertboard/vumeter.c, code is 87, comment is 30, blank is 35.
+WiringPi/examples/header.h, code is 0, comment is 22, blank is 1.
+WiringPi/examples/isr-osc.c, code is 42, comment is 58, blank is 18.
+WiringPi/examples/isr.c, code is 50, comment is 44, blank is 16.
+WiringPi/examples/lcd-adafruit.c, code is 190, comment is 73, blank is 90.
+WiringPi/examples/lcd.c, code is 162, comment is 60, blank is 65.
+WiringPi/examples/lowPower.c, code is 18, comment is 39, blank is 12.
+WiringPi/examples/Makefile, code is 134, comment is 2, blank is 37.
+WiringPi/examples/max31855.c, code is 28, comment is 23, blank is 9.
+WiringPi/examples/nes.c, code is 35, comment is 23, blank is 9.
+WiringPi/examples/okLed.c, code is 38, comment is 32, blank is 12.
+WiringPi/examples/PiFace/blink.c, code is 20, comment is 31, blank is 11.
+WiringPi/examples/PiFace/buttons.c, code is 40, comment is 40, blank is 23.
+WiringPi/examples/PiFace/ladder.c, code is 171, comment is 86, blank is 86.
+WiringPi/examples/PiFace/Makefile, code is 69, comment is 2, blank is 19.
+WiringPi/examples/PiFace/metro.c, code is 57, comment is 31, blank is 24.
+WiringPi/examples/PiFace/motor.c, code is 68, comment is 26, blank is 26.
+WiringPi/examples/PiFace/reaction.c, code is 114, comment is 43, blank is 39.
+WiringPi/examples/PiGlow/Makefile, code is 65, comment is 2, blank is 17.
+WiringPi/examples/PiGlow/piglow.c, code is 120, comment is 34, blank is 24.
+WiringPi/examples/PiGlow/piGlow0.c, code is 18, comment is 26, blank is 7.
+WiringPi/examples/PiGlow/piGlow1.c, code is 157, comment is 57, blank is 44.
+WiringPi/examples/pwm.c, code is 26, comment is 23, blank is 9.
+WiringPi/examples/q2w/binary.c, code is 29, comment is 34, blank is 18.
+WiringPi/examples/q2w/blink-io.c, code is 23, comment is 26, blank is 12.
+WiringPi/examples/q2w/blink.c, code is 17, comment is 24, blank is 9.
+WiringPi/examples/q2w/blink.sh, code is 8, comment is 25, blank is 4.
+WiringPi/examples/q2w/bright.c, code is 21, comment is 26, blank is 12.
+WiringPi/examples/q2w/button.c, code is 29, comment is 27, blank is 10.
+WiringPi/examples/q2w/Makefile, code is 65, comment is 2, blank is 19.
+WiringPi/examples/q2w/volts.c, code is 25, comment is 27, blank is 12.
+WiringPi/examples/README.TXT, code is 4, comment is 0, blank is 2.
+WiringPi/examples/rht03.c, code is 40, comment is 28, blank is 18.
+WiringPi/examples/scrollPhat/Makefile, code is 62, comment is 2, blank is 17.
+WiringPi/examples/scrollPhat/scphat.c, code is 120, comment is 67, blank is 44.
+WiringPi/examples/scrollPhat/test.c, code is 51, comment is 34, blank is 30.
+WiringPi/examples/serialRead.c, code is 18, comment is 24, blank is 6.
+WiringPi/examples/serialTest.c, code is 41, comment is 24, blank is 10.
+WiringPi/examples/servo.c, code is 17, comment is 33, blank is 7.
+WiringPi/examples/softPwm.c, code is 45, comment is 26, blank is 18.
+WiringPi/examples/softTone.c, code is 22, comment is 24, blank is 8.
+WiringPi/examples/speed.c, code is 49, comment is 28, blank is 18.
+WiringPi/examples/spiSpeed.c, code is 71, comment is 26, blank is 21.
+WiringPi/examples/wfi.c, code is 57, comment is 66, blank is 40.
+WiringPi/gpio/COPYING.LESSER, code is 84, comment is 1, blank is 28.
+WiringPi/gpio/gpio, it is a binary file.
+WiringPi/gpio/gpio.1, code is 83, comment is 0, blank is 25.
+WiringPi/gpio/gpio.c, code is 937, comment is 260, blank is 359.
+WiringPi/gpio/gpio.o, it is a binary file.
+WiringPi/gpio/Makefile, code is 84, comment is 2, blank is 19.
+WiringPi/gpio/pintest, code is 27, comment is 0, blank is 5.
+WiringPi/gpio/readall.c, code is 256, comment is 88, blank is 67.
+WiringPi/gpio/readall.o, it is a binary file.
+WiringPi/gpio/test.sh, code is 17, comment is 23, blank is 4.
+WiringPi/INSTALL, code is 16, comment is 1, blank is 13.
+WiringPi/newVersion, code is 44, comment is 1, blank is 3.
+WiringPi/People, code is 1, comment is 0, blank is 1.
+WiringPi/pins/Makefile, code is 14, comment is 0, blank is 8.
+WiringPi/pins/pins.pdf, it is a binary file.
+WiringPi/pins/pins.tex, code is 82, comment is 1, blank is 3.
+WiringPi/README.md, code is 14, comment is 3, blank is 5.
+WiringPi/update, code is 3, comment is 0, blank is 2.
+WiringPi/VERSION, code is 1, comment is 0, blank is 0.
+WiringPi/version.h, code is 3, comment is 0, blank is 0.
+WiringPi/wiringPi/ads1115.c, code is 144, comment is 123, blank is 69.
+WiringPi/wiringPi/ads1115.h, code is 21, comment is 26, blank is 8.
+WiringPi/wiringPi/ads1115.o, it is a binary file.
+WiringPi/wiringPi/bmp180.c, code is 113, comment is 74, blank is 54.
+WiringPi/wiringPi/bmp180.h, code is 7, comment is 24, blank is 3.
+WiringPi/wiringPi/bmp180.o, it is a binary file.
+WiringPi/wiringPi/COPYING.LESSER, code is 84, comment is 1, blank is 28.
+WiringPi/wiringPi/drcNet.c, code is 190, comment is 134, blank is 86.
+WiringPi/wiringPi/drcNet.h, code is 7, comment is 31, blank is 4.
+WiringPi/wiringPi/drcNet.o, it is a binary file.
+WiringPi/wiringPi/drcSerial.c, code is 99, comment is 66, blank is 39.
+WiringPi/wiringPi/drcSerial.h, code is 7, comment is 23, blank is 3.
+WiringPi/wiringPi/drcSerial.o, it is a binary file.
+WiringPi/wiringPi/ds18b20.c, code is 63, comment is 48, blank is 37.
+WiringPi/wiringPi/ds18b20.h, code is 7, comment is 24, blank is 3.
+WiringPi/wiringPi/ds18b20.o, it is a binary file.
+WiringPi/wiringPi/htu21d.c, code is 73, comment is 45, blank is 35.
+WiringPi/wiringPi/htu21d.h, code is 7, comment is 24, blank is 3.
+WiringPi/wiringPi/htu21d.o, it is a binary file.
+WiringPi/wiringPi/libwiringPi.so.2.60, it is a binary file.
+WiringPi/wiringPi/Makefile, code is 140, comment is 2, blank is 25.
+WiringPi/wiringPi/max31855.c, code is 48, comment is 41, blank is 22.
+WiringPi/wiringPi/max31855.h, code is 7, comment is 23, blank is 3.
+WiringPi/wiringPi/max31855.o, it is a binary file.
+WiringPi/wiringPi/max5322.c, code is 32, comment is 36, blank is 17.
+WiringPi/wiringPi/max5322.h, code is 7, comment is 23, blank is 3.
+WiringPi/wiringPi/max5322.o, it is a binary file.
+WiringPi/wiringPi/mcp23008.c, code is 68, comment is 46, blank is 35.
+WiringPi/wiringPi/mcp23008.h, code is 7, comment is 23, blank is 3.
+WiringPi/wiringPi/mcp23008.o, it is a binary file.
+WiringPi/wiringPi/mcp23016.c, code is 86, comment is 47, blank is 36.
+WiringPi/wiringPi/mcp23016.h, code is 7, comment is 23, blank is 3.
+WiringPi/wiringPi/mcp23016.o, it is a binary file.
+WiringPi/wiringPi/mcp23016reg.h, code is 14, comment is 28, blank is 6.
+WiringPi/wiringPi/mcp23017.c, code is 105, comment is 52, blank is 44.
+WiringPi/wiringPi/mcp23017.h, code is 7, comment is 23, blank is 3.
+WiringPi/wiringPi/mcp23017.o, it is a binary file.
+WiringPi/wiringPi/mcp23s08.c, code is 85, comment is 56, blank is 47.
+WiringPi/wiringPi/mcp23s08.h, code is 7, comment is 23, blank is 3.
+WiringPi/wiringPi/mcp23s08.o, it is a binary file.
+WiringPi/wiringPi/mcp23s17.c, code is 123, comment is 62, blank is 56.
+WiringPi/wiringPi/mcp23s17.h, code is 7, comment is 23, blank is 3.
+WiringPi/wiringPi/mcp23s17.o, it is a binary file.
+WiringPi/wiringPi/mcp23x08.h, code is 33, comment is 30, blank is 10.
+WiringPi/wiringPi/mcp23x0817.h, code is 44, comment is 32, blank is 11.
+WiringPi/wiringPi/mcp3002.c, code is 27, comment is 34, blank is 15.
+WiringPi/wiringPi/mcp3002.h, code is 7, comment is 23, blank is 3.
+WiringPi/wiringPi/mcp3002.o, it is a binary file.
+WiringPi/wiringPi/mcp3004.c, code is 25, comment is 37, blank is 15.
+WiringPi/wiringPi/mcp3004.h, code is 7, comment is 23, blank is 3.
+WiringPi/wiringPi/mcp3004.o, it is a binary file.
+WiringPi/wiringPi/mcp3422.c, code is 60, comment is 46, blank is 24.
+WiringPi/wiringPi/mcp3422.h, code is 15, comment is 22, blank is 6.
+WiringPi/wiringPi/mcp3422.o, it is a binary file.
+WiringPi/wiringPi/mcp4802.c, code is 28, comment is 34, blank is 14.
+WiringPi/wiringPi/mcp4802.h, code is 7, comment is 23, blank is 3.
+WiringPi/wiringPi/mcp4802.o, it is a binary file.
+WiringPi/wiringPi/noMoreStatic, code is 8, comment is 0, blank is 3.
+WiringPi/wiringPi/pcf8574.c, code is 53, comment is 47, blank is 28.
+WiringPi/wiringPi/pcf8574.h, code is 7, comment is 23, blank is 3.
+WiringPi/wiringPi/pcf8574.o, it is a binary file.
+WiringPi/wiringPi/pcf8591.c, code is 31, comment is 41, blank is 19.
+WiringPi/wiringPi/pcf8591.h, code is 7, comment is 23, blank is 3.
+WiringPi/wiringPi/pcf8591.o, it is a binary file.
+WiringPi/wiringPi/piHiPri.c, code is 13, comment is 30, blank is 8.
+WiringPi/wiringPi/piHiPri.o, it is a binary file.
+WiringPi/wiringPi/piThread.c, code is 16, comment is 36, blank is 11.
+WiringPi/wiringPi/piThread.o, it is a binary file.
+WiringPi/wiringPi/pseudoPins.c, code is 37, comment is 38, blank is 20.
+WiringPi/wiringPi/pseudoPins.h, code is 1, comment is 24, blank is 1.
+WiringPi/wiringPi/pseudoPins.o, it is a binary file.
+WiringPi/wiringPi/rht03.c, code is 118, comment is 78, blank is 60.
+WiringPi/wiringPi/rht03.h, code is 1, comment is 23, blank is 1.
+WiringPi/wiringPi/rht03.o, it is a binary file.
+WiringPi/wiringPi/sn3218.c, code is 26, comment is 43, blank is 13.
+WiringPi/wiringPi/sn3218.h, code is 7, comment is 23, blank is 3.
+WiringPi/wiringPi/sn3218.o, it is a binary file.
+WiringPi/wiringPi/softPwm.c, code is 85, comment is 62, blank is 38.
+WiringPi/wiringPi/softPwm.h, code is 9, comment is 23, blank is 3.
+WiringPi/wiringPi/softPwm.o, it is a binary file.
+WiringPi/wiringPi/softServo.c, code is 98, comment is 80, blank is 39.
+WiringPi/wiringPi/softServo.h, code is 8, comment is 24, blank is 3.
+WiringPi/wiringPi/softTone.c, code is 69, comment is 49, blank is 34.
+WiringPi/wiringPi/softTone.h, code is 9, comment is 27, blank is 3.
+WiringPi/wiringPi/softTone.o, it is a binary file.
+WiringPi/wiringPi/sr595.c, code is 48, comment is 42, blank is 22.
+WiringPi/wiringPi/sr595.h, code is 8, comment is 23, blank is 3.
+WiringPi/wiringPi/sr595.o, it is a binary file.
+WiringPi/wiringPi/wiringPi.c, code is 1360, comment is 840, blank is 498.
+WiringPi/wiringPi/wiringPi.h, code is 141, comment is 70, blank is 63.
+WiringPi/wiringPi/wiringPi.o, it is a binary file.
+WiringPi/wiringPi/wiringPiI2C.c, code is 107, comment is 81, blank is 46.
+WiringPi/wiringPi/wiringPiI2C.h, code is 14, comment is 23, blank is 5.
+WiringPi/wiringPi/wiringPiI2C.o, it is a binary file.
+WiringPi/wiringPi/wiringPiSPI.c, code is 54, comment is 56, blank is 35.
+WiringPi/wiringPi/wiringPiSPI.h, code is 10, comment is 23, blank is 3.
+WiringPi/wiringPi/wiringPiSPI.o, it is a binary file.
+WiringPi/wiringPi/wiringSerial.c, code is 115, comment is 67, blank is 45.
+WiringPi/wiringPi/wiringSerial.h, code is 14, comment is 21, blank is 3.
+WiringPi/wiringPi/wiringSerial.o, it is a binary file.
+WiringPi/wiringPi/wiringShift.c, code is 41, comment is 33, blank is 9.
+WiringPi/wiringPi/wiringShift.h, code is 13, comment is 23, blank is 5.
+WiringPi/wiringPi/wiringShift.o, it is a binary file.
+WiringPi/wiringPi/wpiExtensions.c, code is 510, comment is 203, blank is 220.
+WiringPi/wiringPi/wpiExtensions.h, code is 1, comment is 23, blank is 2.
+WiringPi/wiringPi/wpiExtensions.o, it is a binary file.
+WiringPi/wiringPiD/daemonise.c, code is 49, comment is 15, blank is 20.
+WiringPi/wiringPiD/daemonise.h, code is 1, comment is 7, blank is 1.
+WiringPi/wiringPiD/drcNetCmd.h, code is 16, comment is 21, blank is 7.
+WiringPi/wiringPiD/Makefile, code is 82, comment is 2, blank is 18.
+WiringPi/wiringPiD/network.c, code is 170, comment is 82, blank is 82.
+WiringPi/wiringPiD/network.h, code is 8, comment is 22, blank is 1.
+WiringPi/wiringPiD/runRemote.c, code is 78, comment is 27, blank is 22.
+WiringPi/wiringPiD/runRemote.h, code is 2, comment is 24, blank is 3.
+WiringPi/wiringPiD/wiringpid.c, code is 241, comment is 57, blank is 84.
+===============================================================================
