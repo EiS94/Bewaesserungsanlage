@@ -1,6 +1,6 @@
 # Bewässerungsanlage
 
-<img src="https://i.ibb.co/pJ1dRJ4/icon.png" width="32%" style="float: right">
+![alt text](https://i.ibb.co/pJ1dRJ4/icon.png#right)
 - Bewässerungsanlage zum automatischen Bewässern von Gartenpflanzen
 - Inklusive Regen-, Bodenfeuchtigkeits-, Helligkeits-, Temperatur- und Luftfeuchtigkeitssensor
 - Anhand der Sensordaten wird entschieden, wann bewässert wird
