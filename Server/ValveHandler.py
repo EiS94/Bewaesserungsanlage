@@ -19,32 +19,52 @@ def calcuteValveStatus():
                 if (countPlantStatus("braucht Wasser") > 1):
                     JsonWriter.openValve()
                     addLogData("mehr als 1 Pflanze braucht Wasser")
+                    time.sleep(5)
+                    JsonWriter.closeValve()
+                    addLogData("wieder geschlossen")
+                    time.sleep(60*20)
+                    
 
                 #wenn mehr als 4 Pflanzen nur ausreichend bewaessert sind wird bewaessert
                 elif (countPlantStatus("ausreichend bewässert") > 4):
                     JsonWriter.openValve()
                     addLogData("mehr als 4 nur ausreichend")
+                    time.sleep(5)
+                    JsonWriter.closeValve()
+                    addLogData("wieder geschlossen")
+                    time.sleep(60*20)
+                    
 
                 #wenn eine Pflanze Wasser braucht und mehr als 2 Pflanzen nur ausreichend
                 #bewaessert sind, wird bewaessert
-                elif (countPlantStatus("ausreichend bewässert") > 4 and countPlantStatus("braucht Wasser") == 1):
+                elif (countPlantStatus("ausreichend bewässert") > 2 and countPlantStatus("braucht Wasser") == 1):
                     JsonWriter.openValve()
                     addLogData("1 braucht, mehr als 2 ausreichend")
+                    time.sleep(5)
+                    JsonWriter.closeValve()
+                    addLogData("wieder geschlossen")
+                    time.sleep(60*20)
+                
 
                 #ansonsten sicherheitshalber Ventil schliessen
                 else: JsonWriter.closeValve()
-                addLogData("sicherheitshalber ausmachen")
+                #addLogData("sicherheitshalber ausmachen")
 
         #Fall, wenn alle Wasser benoetigen
         elif (countPlantStatus("braucht Wasser") == 5):
             JsonWriter.openValve()
             addLogData("alle brauchen Wasser")
+            time.sleep(5)
+            JsonWriter.closeValve()
+            addLogData("wieder geschlossen")
+            time.sleep(60*15)
+            
 
         #ansonsten wird sicherheitshalber geschlossen
         else: 
             JsonWriter.closeValve()
-            addLogData("aus")
-        time.sleep(5*60)
+            #addLogData("aus")
+        time.sleep(20)
 
 def getTime(timestamp):
     return datetime.fromtimestamp(timestamp)

@@ -267,6 +267,11 @@ public class Main extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent homeIntent = new Intent(Main.this, DishActivity.class);
+                try {
+                    homeIntent.putExtras(Utility.jsonToBundle(json));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
                 startActivity(homeIntent);
                 finish();
             }

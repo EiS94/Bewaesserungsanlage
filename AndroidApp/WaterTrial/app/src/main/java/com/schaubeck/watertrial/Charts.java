@@ -68,6 +68,14 @@ public class Charts extends AppCompatActivity implements OnChartGestureListener,
     }
 
     @Override
+    public void onBackPressed() {
+        Intent homeIntent = new Intent(Charts.this, Main.class);
+        homeIntent.putExtras(getIntent().getExtras());
+        startActivity(homeIntent);
+        finish();
+    }
+
+    @Override
     public void onChartGestureStart(MotionEvent me, ChartTouchListener.ChartGesture lastPerformedGesture) {
 
     }

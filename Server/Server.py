@@ -15,6 +15,7 @@ import ValveHandler
 import plantNamesWriter as pNW
 import hashlib
 import logging
+import DishesWriter
 
 
 #autostarts after network is connected and sleeps 10 seconds, so that the ip-adress is set.
@@ -71,10 +72,6 @@ def data():
 def plantNames():
     pNW.run()
     return send_file("plantNames.json", cache_timeout=0)
-
-@app.route('/dishes.csv')
-def dishes():
-    return send_file("dishes.csv", cache_timeout=0)
 
 #needed, to controll the watervalve
 @app.route('/v')
@@ -251,6 +248,35 @@ def wheaterData():
 
     file.close()
     return render_template('wheaterData.html', tempchart=resultTemp, humchart=resultHum, rainchart=resultRain, illchart=resultIll)
+
+###########################################
+#dishes feature:
+
+@app.route('/dishes.csv')
+def dishes():
+    return send_file("dishes.csv", cache_timeout=0)
+
+#needed, to add/remove/edit dishes
+@app.route('/dishHandler')
+def handleDishes():
+    mode = request.args.get("mode")
+    name = request.args.get("name")
+    veggy = request.args.get("veggy")
+    url = request.args.get("url")
+    ingredients = request.args.get("ingredients")
+    oldName = request.args.get("oldName")
+    if mode == "new":
+        DishesWriter.addDish(name, veggy, url, ingredients)
+        return name + " hinzugefügt"
+    elif mode == "remove":
+        DishesWriter.removeDish(name)
+        return name + " entfernt"
+    elif mode == "edit":
+        DishesWriter.editDish(oldName, name, veggy, url, ingredients)
+        return name + " geändert"
+    return "unbekannte Aktion"
+
+###########################################
 
 
 #starts the server

@@ -23,3 +23,7 @@ def removeDish(name=str):
     with open('/home/pi/Bewaesserung/dishes.csv', 'w') as file:
         for line in lines:
             file.write(line)
+
+def editDish(oldName=str, newName=str, newVeggy=str, newUrl=None, newIngredients=None):
+    removeDish(oldName)
+    addDish(newName, newVeggy, newUrl, newIngredients)

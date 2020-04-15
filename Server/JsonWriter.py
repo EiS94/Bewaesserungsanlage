@@ -86,9 +86,9 @@ def run():
 
 def getAnalogPlantStatus(i):
     plant1Status = getAnalogSignal(i)
-    if (plant1Status < 600):
+    if (plant1Status < 500):
         return "ausgezeichnet bewässert"
-    elif (plant1Status < 800):
+    elif (plant1Status < 750):
         return "ausreichend bewässert"
     else:
         return "braucht Wasser"

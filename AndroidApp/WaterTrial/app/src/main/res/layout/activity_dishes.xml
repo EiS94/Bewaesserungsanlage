@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:textColor="#FFFFFF"
-        android:textSize="16sp"
+        android:textSize="24sp"
         android:textStyle="bold"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="@+id/dishBackground"
@@ -84,8 +84,10 @@
         android:tint="@color/colorAccent"
         app:layout_constraintBottom_toTopOf="@id/btnRandom"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/veggyChecker" />
+        app:layout_constraintTop_toBottomOf="@+id/veggyChecker"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/dishText"
@@ -95,6 +97,7 @@
         android:autoLink="web"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
+        android:textSize="20sp"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="@+id/dishBackground"
         app:layout_constraintStart_toStartOf="@+id/dishBackground"
@@ -108,6 +111,7 @@
         android:layout_marginBottom="32dp"
         android:background="#00FFFFFF"
         android:scaleType="centerCrop"
+        android:outlineAmbientShadowColor="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/plus" />
@@ -118,7 +122,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Name:"
+        android:textColor="#FFFFFF"
         android:visibility="invisible"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/dishBackground"
         app:layout_constraintStart_toStartOf="@+id/dishBackground"
         app:layout_constraintTop_toTopOf="@id/dishBackground" />
@@ -129,6 +135,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:visibility="invisible"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="@+id/dishBackground"
         app:layout_constraintStart_toStartOf="@+id/dishBackground"
         app:layout_constraintTop_toBottomOf="@+id/textNewName" />
@@ -140,6 +147,7 @@
         android:layout_marginTop="8dp"
         android:text="vegetarisch"
         android:visibility="invisible"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="@+id/dishBackground"
         app:layout_constraintStart_toStartOf="@+id/dishBackground"
         app:layout_constraintTop_toBottomOf="@+id/inputName" />
@@ -151,6 +159,8 @@
         android:layout_marginTop="8dp"
         android:text="Zutaten"
         android:visibility="invisible"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/dishBackground"
         app:layout_constraintStart_toStartOf="@+id/dishBackground"
         app:layout_constraintTop_toBottomOf="@+id/inputVeggy" />
@@ -161,6 +171,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:visibility="invisible"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="@+id/dishBackground"
         app:layout_constraintStart_toStartOf="@+id/dishBackground"
         app:layout_constraintTop_toBottomOf="@+id/textNewZutaten" />
@@ -171,6 +182,8 @@
         android:layout_height="wrap_content"
         android:text="Internetseite zum Rezept:"
         android:visibility="invisible"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/dishBackground"
         app:layout_constraintStart_toStartOf="@+id/dishBackground"
         app:layout_constraintTop_toBottomOf="@+id/inputZutaten" />
@@ -182,6 +195,7 @@
         android:layout_marginTop="8dp"
         android:text=""
         android:visibility="invisible"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="@+id/dishBackground"
         app:layout_constraintStart_toStartOf="@+id/dishBackground"
         app:layout_constraintTop_toBottomOf="@+id/textNewUrl" />
@@ -197,5 +211,41 @@
         app:layout_constraintEnd_toEndOf="@+id/dishBackground"
         app:layout_constraintStart_toStartOf="@+id/dishBackground"
          />
+
+    <Button
+        android:id="@+id/btnEditDish"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ändern"
+        android:textAllCaps="false"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@id/dishBackground"
+        app:layout_constraintEnd_toEndOf="@+id/dishBackground"
+        app:layout_constraintStart_toStartOf="@+id/dishBackground"
+        />
+
+    <ImageButton
+        android:id="@+id/btnEdit"
+        android:layout_width="47dp"
+        android:layout_height="47dp"
+        android:layout_marginBottom="8dp"
+        android:scaleType="fitXY"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/dishBackground"
+        app:layout_constraintEnd_toStartOf="@+id/btnAddNewDish"
+        app:layout_constraintStart_toStartOf="@+id/dishBackground"
+        app:srcCompat="@drawable/ic_edit_button" />
+
+    <ImageButton
+        android:id="@+id/btnTrash"
+        android:layout_width="47dp"
+        android:layout_height="47dp"
+        android:layout_marginBottom="8dp"
+        android:scaleType="centerCrop"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/dishBackground"
+        app:layout_constraintEnd_toEndOf="@+id/dishBackground"
+        app:layout_constraintStart_toEndOf="@id/btnCloseDish"
+        app:srcCompat="@drawable/ic_trash" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

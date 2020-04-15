@@ -155,7 +155,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/switchWaterValve"
-        app:vector="@drawable/ic_allplantsok" />
+        app:vector="@drawable/ic_garden_update" />
 
     <Button
         android:id="@+id/settings"
