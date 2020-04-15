@@ -18,7 +18,6 @@
 - <a href="https://www.amazon.de/gp/product/B072MZJ92F/ref=ppx_yo_dt_b_asin_title_o07_s00?ie=UTF8&psc=1">Schlauchsystem</a>
 - alle oben genannten Sensoren
 
-<br>
 ## Server
 <a href="https://i.ibb.co/hds9t3M/Bildschirmfoto-von-2020-04-15-12-18-55.png"><img src="https://i.ibb.co/hds9t3M/Bildschirmfoto-von-2020-04-15-12-18-55.png" width="30%" style="float : right"></a>
 Server läuft über Python mit der Flask-Library auf dem Raspberry Pi. Startet beim booten automatisch und ist im Heimnetzwerk unter https://RASPBERRY_IP:5000 im Webbrowser aufrufbar. Dort gelangt man wie im Bild zu sehen zu einer Übersichtsseite, die alle wichtigen Informationen zusammenfasst. Außerdem lassen sich die Pflanzennamen ändern und man kann sich einen <a href="https://i.ibb.co/Yd1D0bS/Bildschirmfoto-von-2020-04-15-12-23-20.png">zeitlichen Verlauf der Wetterstatistiken</a> anzeigen lassen.
