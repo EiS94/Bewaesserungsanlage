@@ -1,5 +1,6 @@
 package com.schaubeck.watertrial;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -26,15 +27,12 @@ import java.util.concurrent.TimeoutException;
 
 public class Login extends AppCompatActivity {
 
-    //UI Element
-    private TextView textTitle, textPassword, textServerAddress;
     private EditText serverAddress, password;
-    private Button connect;
     //private ImageView gifLoad;
     private ProgressBar progressBar;
 
     //Variables
-    public static String ipAdress = "192.168.178.25";
+    public static String ipAdress = "192.168.0.25";
     public static int port = 5000;
     public static String CMD = "0";
     public static boolean valveStatus;
@@ -45,12 +43,13 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        textTitle = (TextView) findViewById(R.id.textTitle);
-        textPassword = (TextView) findViewById(R.id.textPassword);
-        textServerAddress = (TextView) findViewById(R.id.textServerAddress);
+        //UI Element
+        TextView textTitle = (TextView) findViewById(R.id.textTitle);
+        TextView textPassword = (TextView) findViewById(R.id.textPassword);
+        TextView textServerAddress = (TextView) findViewById(R.id.textServerAddress);
         serverAddress = (EditText) findViewById(R.id.serverAddress);
         password = (EditText) findViewById(R.id.password);
-        connect = (Button) findViewById(R.id.btnConnect);
+        Button connect = (Button) findViewById(R.id.btnConnect);
         //gifLoad = (ImageView) findViewById(R.id.gifLoad);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
 
@@ -84,7 +83,7 @@ public class Login extends AppCompatActivity {
         port = Integer.parseInt(split[1]);
     }
 
-    public class Socket_AsyncTask extends AsyncTask<Void, Void, Void> {
+    public static class Socket_AsyncTask extends AsyncTask<Void, Void, Void> {
 
         Socket socket;
 
@@ -97,8 +96,6 @@ public class Login extends AppCompatActivity {
                 dataOutputStream.writeBytes(CMD);
                 dataOutputStream.close();
                 socket.close();
-            } catch (UnknownHostException e) {
-                e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -106,6 +103,7 @@ public class Login extends AppCompatActivity {
         }
     }
 
+    @SuppressLint("StaticFieldLeak")
     private class GetJSONTask extends AsyncTask<String, Void, String> {
 
         @Override
@@ -142,11 +140,7 @@ public class Login extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 super.onPostExecute(result);
-            } catch (JSONException e) {
-                Toast.makeText(getApplicationContext(), "Verbindung zum Server nicht möglich", Toast.LENGTH_SHORT).show();
-                //gifLoad.setVisibility(View.GONE);
-                progressBar.setVisibility(View.INVISIBLE);
-            } catch (NullPointerException e) {
+            } catch (JSONException | NullPointerException e) {
                 Toast.makeText(getApplicationContext(), "Verbindung zum Server nicht möglich", Toast.LENGTH_SHORT).show();
                 //gifLoad.setVisibility(View.GONE);
                 progressBar.setVisibility(View.INVISIBLE);
@@ -162,6 +156,7 @@ public class Login extends AppCompatActivity {
         }
     }
 
+    @SuppressLint("StaticFieldLeak")
     private class GetPlantNames extends AsyncTask<String, Void, String> {
 
         JSONArray helper;
@@ -183,11 +178,7 @@ public class Login extends AppCompatActivity {
                 helper = new JSONArray(result);
                 handlePostExecute();
                 super.onPostExecute(result);
-            } catch (JSONException e) {
-                Toast.makeText(getApplicationContext(), "Verbindung zum Server nicht möglich", Toast.LENGTH_SHORT).show();
-                //gifLoad.setVisibility(View.GONE);
-                progressBar.setVisibility(View.INVISIBLE);
-            } catch (NullPointerException e) {
+            } catch (JSONException | NullPointerException e) {
                 Toast.makeText(getApplicationContext(), "Verbindung zum Server nicht möglich", Toast.LENGTH_SHORT).show();
                 //gifLoad.setVisibility(View.GONE);
                 progressBar.setVisibility(View.INVISIBLE);
