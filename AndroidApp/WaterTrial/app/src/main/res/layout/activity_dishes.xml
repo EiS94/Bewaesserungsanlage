@@ -68,26 +68,23 @@
     <CheckBox
         android:id="@+id/veggyChecker"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="nur vegetarisch"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        android:layout_height="wrap_content" />
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <de.codecrafters.tableview.TableView
         android:id="@+id/tableView"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
-        android:layout_marginBottom="32dp"
         android:tint="@color/colorAccent"
-        app:layout_constraintBottom_toTopOf="@id/btnRandom"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/veggyChecker"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/inputSearch" />
 
     <TextView
         android:id="@+id/dishText"
@@ -247,5 +244,19 @@
         app:layout_constraintEnd_toEndOf="@+id/dishBackground"
         app:layout_constraintStart_toEndOf="@id/btnCloseDish"
         app:srcCompat="@drawable/ic_trash" />
+
+    <EditText
+        android:id="@+id/inputSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:ems="10"
+        android:hint="Suche"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/tableView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/veggyChecker" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,7 +6,9 @@ import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.SpannableString;
+import android.text.TextWatcher;
 import android.text.style.UnderlineSpan;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -55,7 +57,7 @@ public class DishActivity extends AppCompatActivity {
     ImageButton btnAddDish, btnEdit, btnDelete;
     ImageView dishBackground;
     TextView dishName, dishText, textNewName, textNewZutaten, textNewUrl;
-    EditText inputName, inputZutaten, inputUrl;
+    EditText inputName, inputZutaten, inputUrl, searchBar;
 
 
     @RequiresApi(api = Build.VERSION_CODES.Q)
@@ -85,6 +87,7 @@ public class DishActivity extends AppCompatActivity {
         inputName = (EditText) findViewById(R.id.inputName);
         inputZutaten = (EditText) findViewById(R.id.inputZutaten);
         inputUrl = (EditText) findViewById(R.id.inputUrl);
+        searchBar = findViewById(R.id.inputSearch);
 
         tb.setColumnCount(2);
         tb.setColumnWeight(0, 4);
@@ -138,6 +141,23 @@ public class DishActivity extends AppCompatActivity {
                 if (isChecked) {
                     showOnlyVeggie();
                 } else showAll();
+            }
+        });
+
+        searchBar.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                filterDishesBySearch(charSequence.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
             }
         });
 
@@ -271,6 +291,29 @@ public class DishActivity extends AppCompatActivity {
 
         for (Dish d : dishList) {
             if (d.isVeggy()) list.add(d);
+        }
+
+        dishesStringList = new String[dishList.size()][2];
+
+        for (int i = 0; i < list.size(); i++) {
+            Dish d = list.get(i);
+            dishesStringList[i][0] = d.getName();
+            if (d.isVeggy()) dishesStringList[i][1] = "ja";
+            else dishesStringList[i][1] = "nein";
+        }
+
+        tb.setDataAdapter(new SimpleTableDataAdapter(this, dishesStringList));
+        tb.invalidate();
+        tb.invalidateOutline();
+        tb.postInvalidate();
+
+    }
+
+    private void filterDishesBySearch(String searchText) {
+        List<Dish> list = new ArrayList<>();
+
+        for (Dish d : dishList) {
+            if (d.name.toLowerCase().contains(searchText.toLowerCase())) list.add(d);
         }
 
         dishesStringList = new String[dishList.size()][2];
