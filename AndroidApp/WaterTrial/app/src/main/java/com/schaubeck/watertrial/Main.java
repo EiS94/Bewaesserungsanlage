@@ -1,5 +1,6 @@
 package com.schaubeck.watertrial;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.media.MediaPlayer;
@@ -54,6 +55,7 @@ public class Main extends AppCompatActivity {
     private JSONObject json = new JSONObject();
     List<String> plantNames = new ArrayList<>();
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

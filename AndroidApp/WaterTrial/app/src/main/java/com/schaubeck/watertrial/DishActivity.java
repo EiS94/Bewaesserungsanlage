@@ -1,5 +1,6 @@
 package com.schaubeck.watertrial;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -33,6 +34,7 @@ import java.net.ProtocolException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Random;
 import java.util.concurrent.TimeoutException;
 
@@ -66,27 +68,27 @@ public class DishActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dishes);
 
-        getSupportActionBar().hide();
+        Objects.requireNonNull(getSupportActionBar()).hide();
 
-        tb = (TableView<String[]>) findViewById(R.id.tableView);
-        veggyChecker = (CheckBox) findViewById(R.id.veggyChecker);
-        inputVeggy = (CheckBox) findViewById(R.id.inputVeggy);
-        btnRandom = (Button) findViewById(R.id.btnRandom);
-        btnCloseDish = (Button) findViewById(R.id.btnCloseDish);
-        btnAddNewDish = (Button) findViewById(R.id.btnAddNewDish);
-        btnEditDish = (Button) findViewById(R.id.btnEditDish);
-        btnAddDish = (ImageButton) findViewById(R.id.btnAddDish);
-        btnEdit = (ImageButton) findViewById(R.id.btnEdit);
-        btnDelete = (ImageButton) findViewById(R.id.btnTrash);
-        dishBackground = (ImageView) findViewById(R.id.dishBackground);
-        dishName = (TextView) findViewById(R.id.dishName);
-        dishText = (TextView) findViewById(R.id.dishText);
-        textNewName = (TextView) findViewById(R.id.textNewName);
-        textNewZutaten = (TextView) findViewById(R.id.textNewZutaten);
-        textNewUrl = (TextView) findViewById(R.id.textNewUrl);
-        inputName = (EditText) findViewById(R.id.inputName);
-        inputZutaten = (EditText) findViewById(R.id.inputZutaten);
-        inputUrl = (EditText) findViewById(R.id.inputUrl);
+        tb = findViewById(R.id.tableView);
+        veggyChecker = findViewById(R.id.veggyChecker);
+        inputVeggy = findViewById(R.id.inputVeggy);
+        btnRandom = findViewById(R.id.btnRandom);
+        btnCloseDish = findViewById(R.id.btnCloseDish);
+        btnAddNewDish = findViewById(R.id.btnAddNewDish);
+        btnEditDish = findViewById(R.id.btnEditDish);
+        btnAddDish = findViewById(R.id.btnAddDish);
+        btnEdit = findViewById(R.id.btnEdit);
+        btnDelete = findViewById(R.id.btnTrash);
+        dishBackground = findViewById(R.id.dishBackground);
+        dishName = findViewById(R.id.dishName);
+        dishText = findViewById(R.id.dishText);
+        textNewName = findViewById(R.id.textNewName);
+        textNewZutaten = findViewById(R.id.textNewZutaten);
+        textNewUrl = findViewById(R.id.textNewUrl);
+        inputName = findViewById(R.id.inputName);
+        inputZutaten = findViewById(R.id.inputZutaten);
+        inputUrl = findViewById(R.id.inputUrl);
         searchBar = findViewById(R.id.inputSearch);
 
         tb.setColumnCount(2);
@@ -104,6 +106,7 @@ public class DishActivity extends AppCompatActivity {
                     for (Dish d : dishList) {
                         if (d.getName().equals(clickedData[0])) selectedDish = d;
                     }
+                    assert selectedDish != null;
                     String text = selectedDish.getName();
                     SpannableString content = new SpannableString(text);
                     content.setSpan(new UnderlineSpan(), 0, text.length(), 0);
@@ -135,13 +138,10 @@ public class DishActivity extends AppCompatActivity {
             }
         });
 
-        veggyChecker.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    showOnlyVeggie();
-                } else showAll();
-            }
+        veggyChecker.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                showOnlyVeggie();
+            } else showAll();
         });
 
         searchBar.addTextChangedListener(new TextWatcher() {
@@ -161,122 +161,102 @@ public class DishActivity extends AppCompatActivity {
             }
         });
 
-        btnRandom.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Random rd = new Random();
-                Dish d = dishList.get(rd.nextInt(dishList.size()));
-                currentClicked = d.getName();
-                SpannableString content = new SpannableString(currentClicked);
-                content.setSpan(new UnderlineSpan(), 0, currentClicked.length(), 0);
-                dishName.setText(content);
+        btnRandom.setOnClickListener(v -> {
+            Random rd = new Random();
+            Dish d = dishList.get(rd.nextInt(dishList.size()));
+            currentClicked = d.getName();
+            SpannableString content = new SpannableString(currentClicked);
+            content.setSpan(new UnderlineSpan(), 0, currentClicked.length(), 0);
+            dishName.setText(content);
 
-                String others = "";
-                if (d.isVeggy()) others += "vegetarisch\n\n";
-                else others += "nicht vegetarisch\n\n";
-                if (d.getZutaten() != null) {
-                    others += d.getZutaten();
-                }
-                if (d.getUrl() != null) {
-                    others += "\n\n" + d.getUrl();
-                }
-                dishText.setText(others);
-
-                dishBackground.setVisibility(View.VISIBLE);
-                dishBackground.bringToFront();
-                dishName.setVisibility(View.VISIBLE);
-                dishName.bringToFront();
-                dishText.setVisibility(View.VISIBLE);
-                dishText.bringToFront();
-                btnCloseDish.setVisibility(View.VISIBLE);
-                btnDelete.setVisibility(View.VISIBLE);
-                btnDelete.bringToFront();
-                btnEdit.setVisibility(View.VISIBLE);
-                btnEdit.bringToFront();
+            String others = "";
+            if (d.isVeggy()) others += "vegetarisch\n\n";
+            else others += "nicht vegetarisch\n\n";
+            if (d.getZutaten() != null) {
+                others += d.getZutaten();
             }
+            if (d.getUrl() != null) {
+                others += "\n\n" + d.getUrl();
+            }
+            dishText.setText(others);
+
+            dishBackground.setVisibility(View.VISIBLE);
+            dishBackground.bringToFront();
+            dishName.setVisibility(View.VISIBLE);
+            dishName.bringToFront();
+            dishText.setVisibility(View.VISIBLE);
+            dishText.bringToFront();
+            btnCloseDish.setVisibility(View.VISIBLE);
+            btnDelete.setVisibility(View.VISIBLE);
+            btnDelete.bringToFront();
+            btnEdit.setVisibility(View.VISIBLE);
+            btnEdit.bringToFront();
         });
 
-        btnCloseDish.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dishBackground.setVisibility(View.INVISIBLE);
-                dishName.setVisibility(View.INVISIBLE);
-                dishText.setVisibility(View.INVISIBLE);
-                btnCloseDish.setVisibility(View.INVISIBLE);
-                btnEdit.setVisibility(View.INVISIBLE);
-                btnDelete.setVisibility(View.INVISIBLE);
+        btnCloseDish.setOnClickListener(v -> {
+            dishBackground.setVisibility(View.INVISIBLE);
+            dishName.setVisibility(View.INVISIBLE);
+            dishText.setVisibility(View.INVISIBLE);
+            btnCloseDish.setVisibility(View.INVISIBLE);
+            btnEdit.setVisibility(View.INVISIBLE);
+            btnDelete.setVisibility(View.INVISIBLE);
 
-                addDishActive = false;
-            }
+            addDishActive = false;
         });
 
-        btnAddDish.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (!addDishActive) showNewDishMenu();
-            }
+        btnAddDish.setOnClickListener(v -> {
+            if (!addDishActive) showNewDishMenu();
         });
 
-        btnAddNewDish.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                handleAddNewDish();
-            }
+        btnAddNewDish.setOnClickListener(v -> handleAddNewDish());
+
+        btnDelete.setOnClickListener(v -> {
+            new ValveChanger().execute("http://" + Login.ipAdress + ":" + Login.port +
+                    "/dishHandler?mode=remove&name=" + currentClicked);
+            dishBackground.setVisibility(View.INVISIBLE);
+            dishName.setVisibility(View.INVISIBLE);
+            dishText.setVisibility(View.INVISIBLE);
+            btnCloseDish.setVisibility(View.INVISIBLE);
+            btnEdit.setVisibility(View.INVISIBLE);
+            btnDelete.setVisibility(View.INVISIBLE);
+
+            addDishActive = false;
+
+            new OnlineFileReader().execute("http://" + Login.ipAdress + ":" + Login.port + "/dishes.csv");
+
+            Toast.makeText(getApplicationContext(), currentClicked + " gelöscht", Toast.LENGTH_SHORT).show();
         });
 
-        btnDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                new ValveChanger().execute("http://" + Login.ipAdress + ":" + Login.port +
-                        "/dishHandler?mode=remove&name=" + currentClicked);
-                dishBackground.setVisibility(View.INVISIBLE);
-                dishName.setVisibility(View.INVISIBLE);
-                dishText.setVisibility(View.INVISIBLE);
-                btnCloseDish.setVisibility(View.INVISIBLE);
-                btnEdit.setVisibility(View.INVISIBLE);
-                btnDelete.setVisibility(View.INVISIBLE);
+        btnEdit.setOnClickListener(v -> editDish());
 
-                addDishActive = false;
-
-                new OnlineFileReader().execute("http://" + Login.ipAdress + ":" + Login.port + "/dishes.csv");
-
-                Toast.makeText(getApplicationContext(), currentClicked + " gelöscht", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        btnEdit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                editDish();
-            }
-        });
-
-        btnEditDish.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                handleEditDish();
-            }
-        });
+        btnEditDish.setOnClickListener(v -> handleEditDish());
 
     }
 
     @Override
     public void onBackPressed() {
         Intent home = new Intent(DishActivity.this, Main.class);
-        home.putExtras(getIntent().getExtras());
+        home.putExtras(Objects.requireNonNull(getIntent().getExtras()));
         startActivity(home);
         finish();
     }
 
     private void showAll() {
 
-        dishesStringList = new String[dishList.size()][2];
+        // add 3 empty lines add the end for better usability
+        dishesStringList = new String[dishList.size() + 3][2];
 
         for (int i = 0; i < dishList.size(); i++) {
             Dish d = dishList.get(i);
             dishesStringList[i][0] = d.getName();
             if (d.isVeggy()) dishesStringList[i][1] = "ja";
             else dishesStringList[i][1] = "nein";
+        }
+
+        // set the last 3 lines to empty string to display empty lines in the app
+        for (int i = 1; i < 4; i++) {
+            dishesStringList[dishesStringList.length - i][0] = "";
+            dishesStringList[dishesStringList.length - i][1] = "";
         }
 
         tb.setDataAdapter(new SimpleTableDataAdapter(this, dishesStringList));
@@ -316,13 +296,20 @@ public class DishActivity extends AppCompatActivity {
             if (d.name.toLowerCase().contains(searchText.toLowerCase())) list.add(d);
         }
 
-        dishesStringList = new String[dishList.size()][2];
+        // add 3 empty lines add the end for better usability
+        dishesStringList = new String[dishList.size() + 3][2];
 
         for (int i = 0; i < list.size(); i++) {
             Dish d = list.get(i);
             dishesStringList[i][0] = d.getName();
             if (d.isVeggy()) dishesStringList[i][1] = "ja";
             else dishesStringList[i][1] = "nein";
+        }
+
+        // set the last 3 lines to empty string to display empty lines in the app
+        for (int i = 1; i < 4; i++) {
+            dishesStringList[dishesStringList.length - i][0] = "";
+            dishesStringList[dishesStringList.length - i][1] = "";
         }
 
         tb.setDataAdapter(new SimpleTableDataAdapter(this, dishesStringList));
@@ -332,6 +319,7 @@ public class DishActivity extends AppCompatActivity {
 
     }
 
+    @SuppressLint("StaticFieldLeak")
     public class OnlineFileReader extends AsyncTask<String, Void, Void> {
 
         @Override
@@ -347,11 +335,13 @@ public class DishActivity extends AppCompatActivity {
             }
             HttpURLConnection con = null;
             try {
+                assert url != null;
                 con = (HttpURLConnection) url.openConnection();
             } catch (IOException e) {
                 e.printStackTrace();
             }
             try {
+                assert con != null;
                 con.setRequestMethod("GET");
             } catch (ProtocolException e) {
                 e.printStackTrace();
@@ -378,7 +368,8 @@ public class DishActivity extends AppCompatActivity {
                 }
                 while (true) {
                     try {
-                        if (!((buffer = reader.readLine()) != null)) break;
+                        assert reader != null;
+                        if ((buffer = reader.readLine()) == null) break;
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -397,7 +388,7 @@ public class DishActivity extends AppCompatActivity {
         protected void onPostExecute(Void aVoid) {
             dishList.clear();
             for (String s : file) {
-                s.replaceAll(",", ";");
+                s = s.replaceAll(",", ";");
                 String[] dishString = s.split(";");
                 Dish dish = null;
                 if (dishString[1].equals("yes")) dish = new Dish(dishString[0], true);
@@ -407,12 +398,19 @@ public class DishActivity extends AppCompatActivity {
                 dishList.add(dish);
             }
 
-            dishesStringList = new String[dishList.size()][2];
+            // add 3 empty lines add the end for better usability
+            dishesStringList = new String[dishList.size() + 3][2];
             for (int i = 0; i < dishList.size(); i++) {
                 Dish d = dishList.get(i);
                 dishesStringList[i][0] = d.getName();
                 if (d.isVeggy()) dishesStringList[i][1] = "ja";
                 else dishesStringList[i][1] = "nein";
+            }
+
+            // set the last 3 lines to empty string to display empty lines in the app
+            for (int i = 1; i < 4; i++) {
+                dishesStringList[dishesStringList.length - i][0] = "";
+                dishesStringList[dishesStringList.length - i][1] = "";
             }
 
             setData();
@@ -491,6 +489,7 @@ public class DishActivity extends AppCompatActivity {
                 dish = d;
         }
 
+        assert dish != null;
         inputName.setText(dish.getName());
         inputVeggy.setChecked(dish.isVeggy());
 
