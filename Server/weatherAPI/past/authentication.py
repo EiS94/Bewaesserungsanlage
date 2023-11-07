@@ -2,6 +2,11 @@ import requests
 import json
 import base64
 
+"""
+The API access data must be saved in this folder in a file "access_data.txt" 
+with the format username:password
+"""
+
 
 def get_oauth_key(access_data_path="access_data.txt"):
     with open(access_data_path, "r") as file:
