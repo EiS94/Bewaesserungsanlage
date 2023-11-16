@@ -9,16 +9,12 @@ import android.text.Editable;
 import android.text.SpannableString;
 import android.text.TextWatcher;
 import android.text.style.UnderlineSpan;
-import android.view.KeyEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,7 +35,6 @@ import java.util.Random;
 import java.util.concurrent.TimeoutException;
 
 import de.codecrafters.tableview.TableView;
-import de.codecrafters.tableview.listeners.TableDataClickListener;
 import de.codecrafters.tableview.toolkit.SimpleTableDataAdapter;
 import de.codecrafters.tableview.toolkit.SimpleTableHeaderAdapter;
 
@@ -96,45 +91,42 @@ public class DishActivity extends AppCompatActivity {
 
         new OnlineFileReader().execute("http://" + Login.ipAdress + ":" + Login.port + "/dishes.csv");
 
-        tb.addDataClickListener(new TableDataClickListener<String[]>() {
-            @Override
-            public void onDataClicked(int rowIndex, String[] clickedData) {
-                currentClicked = clickedData[0];
-                if (!addDishActive) {
-                    addDishActive = true;
-                    Dish selectedDish = null;
-                    for (Dish d : dishList) {
-                        if (d.getName().equals(clickedData[0])) selectedDish = d;
-                    }
-                    assert selectedDish != null;
-                    String text = selectedDish.getName();
-                    SpannableString content = new SpannableString(text);
-                    content.setSpan(new UnderlineSpan(), 0, text.length(), 0);
-                    dishName.setText(content);
-
-                    String others = "";
-                    if (selectedDish.isVeggy()) others += "vegetarisch\n\n";
-                    else others += "nicht vegetarisch\n\n";
-                    if (selectedDish.getZutaten() != null) {
-                        others += selectedDish.getZutaten();
-                    }
-                    if (selectedDish.getUrl() != null) {
-                        others += "\n\n" + selectedDish.getUrl();
-                    }
-                    dishText.setText(others);
-
-                    dishBackground.setVisibility(View.VISIBLE);
-                    dishBackground.bringToFront();
-                    dishName.setVisibility(View.VISIBLE);
-                    dishName.bringToFront();
-                    dishText.setVisibility(View.VISIBLE);
-                    dishText.bringToFront();
-                    btnCloseDish.setVisibility(View.VISIBLE);
-                    btnEdit.setVisibility(View.VISIBLE);
-                    btnEdit.bringToFront();
-                    btnDelete.setVisibility(View.VISIBLE);
-                    btnDelete.bringToFront();
+        tb.addDataClickListener((rowIndex, clickedData) -> {
+            currentClicked = clickedData[0];
+            if (!addDishActive) {
+                addDishActive = true;
+                Dish selectedDish = null;
+                for (Dish d : dishList) {
+                    if (d.getName().equals(clickedData[0])) selectedDish = d;
                 }
+                assert selectedDish != null;
+                String text = selectedDish.getName();
+                SpannableString content = new SpannableString(text);
+                content.setSpan(new UnderlineSpan(), 0, text.length(), 0);
+                dishName.setText(content);
+
+                String others = "";
+                if (selectedDish.isVeggy()) others += "vegetarisch\n\n";
+                else others += "nicht vegetarisch\n\n";
+                if (selectedDish.getZutaten() != null) {
+                    others += selectedDish.getZutaten();
+                }
+                if (selectedDish.getUrl() != null) {
+                    others += "\n\n" + selectedDish.getUrl();
+                }
+                dishText.setText(others);
+
+                dishBackground.setVisibility(View.VISIBLE);
+                dishBackground.bringToFront();
+                dishName.setVisibility(View.VISIBLE);
+                dishName.bringToFront();
+                dishText.setVisibility(View.VISIBLE);
+                dishText.bringToFront();
+                btnCloseDish.setVisibility(View.VISIBLE);
+                btnEdit.setVisibility(View.VISIBLE);
+                btnEdit.bringToFront();
+                btnDelete.setVisibility(View.VISIBLE);
+                btnDelete.bringToFront();
             }
         });
 
@@ -294,6 +286,10 @@ public class DishActivity extends AppCompatActivity {
 
         for (Dish d : dishList) {
             if (d.name.toLowerCase().contains(searchText.toLowerCase())) list.add(d);
+
+            if (!list.contains(d) && d.zutaten != null
+                    && d.zutaten.toLowerCase().contains(searchText.toLowerCase()))
+                list.add(d);
         }
 
         // add 3 empty lines add the end for better usability
@@ -325,7 +321,6 @@ public class DishActivity extends AppCompatActivity {
         @Override
         protected Void doInBackground(String... strings) {
             file.clear();
-            ArrayList<String> lines = null;
 
             URL url = null;
             try {
@@ -390,7 +385,7 @@ public class DishActivity extends AppCompatActivity {
             for (String s : file) {
                 s = s.replaceAll(",", ";");
                 String[] dishString = s.split(";");
-                Dish dish = null;
+                Dish dish;
                 if (dishString[1].equals("yes")) dish = new Dish(dishString[0], true);
                 else dish = new Dish(dishString[0], false);
                 if (!dishString[2].equals("null")) dish.setUrl(dishString[2]);
@@ -536,7 +531,7 @@ public class DishActivity extends AppCompatActivity {
             }
         } else if (name.equals("")) {
             Toast.makeText(getApplicationContext(), "Name darf nicht leer sein", Toast.LENGTH_SHORT).show();
-        } else if (!url.equals("") && zutaten.equals("")) {
+        } else if (!url.equals("")) {
             if (veggy) {
                 new ValveChanger().execute("http://" + Login.ipAdress + ":" + Login.port +
                         "/dishHandler?mode=edit&name=" + name + "&veggy=yes&url=" + url
@@ -546,7 +541,7 @@ public class DishActivity extends AppCompatActivity {
                         "/dishHandler?mode=edit&name=" + name + "&veggy=no&url=" + url
                         + "&oldName=" + currentClicked);
             }
-        } else if (url.equals("") && !zutaten.equals("")) {
+        } else if (!zutaten.equals("")) {
             if (veggy) {
                 new ValveChanger().execute("http://" + Login.ipAdress + ":" + Login.port +
                         "/dishHandler?mode=edit&name=" + name + "&veggy=yes&ingredients=" + zutaten
@@ -589,7 +584,7 @@ public class DishActivity extends AppCompatActivity {
             }
         } else if (name.equals("")) {
             Toast.makeText(getApplicationContext(), "Name darf nicht leer sein", Toast.LENGTH_SHORT).show();
-        } else if (!url.equals("") && zutaten.equals("")) {
+        } else if (!url.equals("")) {
             if (veggy) {
                 new ValveChanger().execute("http://" + Login.ipAdress + ":" + Login.port +
                         "/dishHandler?mode=new&name=" + name + "&veggy=yes&url=" + url);
@@ -597,7 +592,7 @@ public class DishActivity extends AppCompatActivity {
                 new ValveChanger().execute("http://" + Login.ipAdress + ":" + Login.port +
                         "/dishHandler?mode=new&name=" + name + "&veggy=no&url=" + url);
             }
-        } else if (url.equals("") && !zutaten.equals("")) {
+        } else if (!zutaten.equals("")) {
             if (veggy) {
                 new ValveChanger().execute("http://" + Login.ipAdress + ":" + Login.port +
                         "/dishHandler?mode=new&name=" + name + "&veggy=yes&ingredients=" + zutaten);
