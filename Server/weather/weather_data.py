@@ -1,5 +1,7 @@
 import json
 import os
+import sys
+import time
 from datetime import datetime, timezone, timedelta
 import pytz
 
@@ -35,7 +37,7 @@ def format_datetime(datetime_to_format):
     return datetime_to_format.strftime("%d.%m.%Y, %H:%M:%S")
 
 
-def get_weather_data(time=datetime.now()):
+def get_weather_data(current_time=datetime.now()):
     """
     use this to get hourly info from the last 24 hours
 
@@ -45,7 +47,7 @@ def get_weather_data(time=datetime.now()):
           "/49.995934,8.230993/csv?access_token=" + token
     """
     # use this url to get info of the last hour and last 24 hours
-    url = "https://api.meteomatics.com/" + time.isoformat() + "Z/t_2m:C,precip_1h:mm,precip_24h:mm," + \
+    url = "https://api.meteomatics.com/" + current_time.isoformat() + "Z/t_2m:C,precip_1h:mm,precip_24h:mm," + \
           "sunrise:sql,sunset:sql,uv:idx,wind_speed_10m:kmh" + "/49.995934,8.230993/csv?access_token=" + \
           get_oauth_key(os.getcwd() + "\\past\\access_data.txt")
 
@@ -179,6 +181,23 @@ class WeatherData:
         """
         return True
 
+    def to_json(self):
+        json_data = {"date": str(datetime.now()), "actual": {}, "forecast": {}}
+        json_data["actual"]["temperature"] = self.temperature
+        json_data["actual"]["description"] = self.description
+        json_data["actual"]["rain_1h"] = str(self.precip_past_hour.value)
+        json_data["actual"]["rain_24h"] = str(self.precip_past_24_hours.value)
+        json_data["actual"]["wind"] = self.wind_speed_kmh
+        json_data["actual"]["uv_index"] = self.uv_index
+        json_data["actual"]["sunrise"] = str(utc_to_local(self.sunrise))
+        json_data["actual"]["sunset"] = str(utc_to_local(self.sunset))
+        json_data["forecast"]["3h"] = {}
+        json_data["forecast"]["3h"]["temp_max"] = self.max_temp_forecast
+        json_data["forecast"]["3h"]["temp_min"] = self.min_temp_forecast
+        json_data["forecast"]["3h"]["description"] = self.description_forecast
+        json_data["forecast"]["3h"]["rain"] = str(self.precip_forecast.value)
+        return json.dumps(json_data)
+
     def __str__(self):
         return format_datetime(self.datetime) + "\n  - Temperature: " + str(self.temperature) + \
             "°C\n  - Description: " + self.description + "\n  - Rain past Hour: " + \
@@ -189,6 +208,19 @@ class WeatherData:
             format_datetime(utc_to_local(self.sunset)) + self.forecast_summary
 
 
+def run_weather_data_thread():
+    try:
+        while (True):
+            wd = get_weather_data()
+            wd.to_json()
+            time.sleep(60 * 30)
+    except KeyboardInterrupt:
+        print("Ctrl+C pressed")
+        sys.exit(1)
+
+
 if __name__ == "__main__":
-    wd = get_weather_data()
-    print(wd.is_watering_necessary())
+    w = get_weather_data()
+    print(w)
+    # print(w.to_json())
+    # print(w.is_watering_necessary())
