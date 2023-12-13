@@ -190,7 +190,7 @@ public class Charts extends AppCompatActivity implements OnChartGestureListener,
             int counter = 0;
             for (String entry : entrys) {
                 String[] split = entry.split(",");
-                yValues.add(new Entry(Utility.getTime(split[0]), Float.parseFloat(split[1])));
+                yValues.add(new Entry(Utilities.getTime(split[0]), Float.parseFloat(split[1])));
             }
 
             LineDataSet set1 = new LineDataSet(yValues, "Temperatur in °C");

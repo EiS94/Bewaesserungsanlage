@@ -1,7 +1,9 @@
-/Server/weatherAPI/past/access_data.txt
-/Server/weatherAPI/past/example_request.csv
-/Server/weatherAPI/past/exampleRequest.csv
-/Server/weatherAPI/forecast/api_key.txt
-/Server/weatherAPI/weather_test.py
-/Server/weatherAPI/.idea/
-/Server/weatherAPI/__pycache__/
+**/.idea/
+**/__pycache__/
+Server/weather/past/access_data.txt
+Server/weather/past/example_request.csv
+Server/weather/past/exampleRequest.csv
+Server/weather/forecast/api_key.txt
+Server/weather/weather_test.py
+Server/weather/__pycache__/
+Server/test.txt

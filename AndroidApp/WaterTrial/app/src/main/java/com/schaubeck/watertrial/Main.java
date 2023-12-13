@@ -51,7 +51,7 @@ public class Main extends AppCompatActivity {
     public static String CMD = "0";
     public static boolean valveStatus;
     VectorChildFinder vector;
-    private JSONObject jsonHelper;
+    private JSONObject jsonHelper, weatherData;
     private JSONObject json = new JSONObject();
     List<String> plantNames = new ArrayList<>();
 
@@ -113,13 +113,28 @@ public class Main extends AppCompatActivity {
             }
         }
 
+        // write weather-data to separate jsonObject
+        try {
+            weatherData = new JSONObject((String) json.get("weather"));
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
+
         //set dataText with the info of json
         String dataText = null;
         try {
+            JSONObject actual = weatherData.getJSONObject("actual");
+            dataText = "Temperatur: " + actual.get("temperature") + "°C\n";
+            dataText += "Beschreibung: " + actual.get("description") + "\n";
+            dataText += "Windgeschwindigkeit: " + actual.get("wind") + " km/h\n";
+            dataText += "Regen in letzter Stunde: " + Utilities.convertRainIntensity((String) actual.get("rain_1h")) + "\n";
+            dataText += "Regen in letzten 24 Stunden: " + Utilities.convertRainIntensity((String) actual.get("rain_24h"));
+            /*
             dataText = "Temperatur: " + json.get("temperatur") + "°C\nLuftfeuchtigkeit: " +
                     json.get("wetness") + " %" + "\nRegen: " + json.get("rain")  + "\nHelligkeit : " +
                     json.get("illuminance") + " lx" + "\nZeit : "
                     + Utility.getTime(((String) json.get("timestamp")));
+             */
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -256,7 +271,7 @@ public class Main extends AppCompatActivity {
             public void onClick(View v) {
                 Intent homeIntent = new Intent(Main.this, Charts.class);
                 try {
-                    homeIntent.putExtras(Utility.jsonToBundle(json));
+                    homeIntent.putExtras(Utilities.jsonToBundle(json));
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -270,7 +285,7 @@ public class Main extends AppCompatActivity {
             public void onClick(View v) {
                 Intent homeIntent = new Intent(Main.this, DishActivity.class);
                 try {
-                    homeIntent.putExtras(Utility.jsonToBundle(json));
+                    homeIntent.putExtras(Utilities.jsonToBundle(json));
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -284,7 +299,7 @@ public class Main extends AppCompatActivity {
             public void onClick(View v) {
                 Intent homeIntent = new Intent(Main.this, Settings.class);
                 try {
-                    homeIntent.putExtras(Utility.jsonToBundle(json));
+                    homeIntent.putExtras(Utilities.jsonToBundle(json));
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -350,12 +365,14 @@ public class Main extends AppCompatActivity {
         }
     }
 
+
+
     private class GetJSONTask extends AsyncTask<String, Void, String> {
 
         @Override
         protected String doInBackground(String... urls) {
             try {
-                return Utility.readJson("http://" + Login.ipAdress + ":" + Login.port + "/data.json");
+                return Utilities.readJson("http://" + Login.ipAdress + ":" + Login.port + "/data.json");
             } catch (TimeoutException e) {
                 e.printStackTrace();
             }
@@ -405,7 +422,7 @@ public class Main extends AppCompatActivity {
             String dataText = "Temperatur: " + json.get("temperatur") + "°C\nLuftfeuchtigkeit: " +
                     json.get("wetness") + " %" + "\nRegen: " + json.get("rain") + "\nHelligkeit : " +
                     json.get("illuminance") + " lx" + "\nZeit : "
-                    + Utility.getTime(String.valueOf((Integer) json.get("timestamp")));
+                    + Utilities.getTime(String.valueOf((Integer) json.get("timestamp")));
             textData.setText(dataText);
             if (json.get("valve").equals("an")) valveStatus = true;
             else valveStatus = false;

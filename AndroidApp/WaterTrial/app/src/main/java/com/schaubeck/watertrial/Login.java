@@ -17,11 +17,15 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 import java.net.InetAddress;
 import java.net.Socket;
-import java.net.UnknownHostException;
+import java.net.URL;
 import java.security.NoSuchAlgorithmException;
 import java.util.concurrent.TimeoutException;
 
@@ -36,7 +40,7 @@ public class Login extends AppCompatActivity {
     public static int port = 5000;
     public static String CMD = "0";
     public static boolean valveStatus;
-    JSONObject jsonHelper, json, plantNames;
+    JSONObject jsonHelper, json, plantNames, weatherData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +67,7 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 try {
-                    if (true || Utility.getSHA(password.getText().toString()).equals(Utility.getPasswordHash())) {
+                    if (true || Utilities.getSHA(password.getText().toString()).equals(Utilities.getPasswordHash())) {
                         setServerAddress();
                         //gifLoad.setVisibility(View.VISIBLE);
                         progressBar.setVisibility(View.VISIBLE);
@@ -103,13 +107,72 @@ public class Login extends AppCompatActivity {
         }
     }
 
+    private class WeatherTask extends AsyncTask<String, Void, String> {
+
+        @Override
+        protected String doInBackground(String... strings) {
+            try {
+                return downloadURL(strings[0]);
+                //Utility.readJson("http://" + ipAdress + ":" + port + "/api/weather");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        private String downloadURL(String urlString) throws IOException {
+            InputStream inputStream = null;
+
+            try {
+                URL url = new URL(urlString);
+                HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+                urlConnection.setRequestMethod("GET");
+                inputStream = urlConnection.getInputStream();
+                return readStream(inputStream);
+            } finally {
+                if (inputStream != null) {
+                    inputStream.close();
+                }
+            }
+        }
+
+        private String readStream(InputStream inputStream) throws IOException {
+            StringBuilder result = new StringBuilder();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+            String line;
+
+            while ((line = reader.readLine()) != null) {
+                result.append(line);
+            }
+            return result.toString();
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            try {
+                weatherData = new JSONObject(result);
+                handlePostExecute();
+            } catch (JSONException | NullPointerException e) {
+                Toast.makeText(getApplicationContext(), "Verbindung zum Server nicht möglich", Toast.LENGTH_SHORT).show();
+                //gifLoad.setVisibility(View.GONE);
+                progressBar.setVisibility(View.INVISIBLE);
+            }
+        }
+
+        void handlePostExecute() throws JSONException {
+            //get JSON and write the Data to Textbox
+            json.put("weather", weatherData);
+            new GetPlantNames().execute();
+        }
+    }
+
     @SuppressLint("StaticFieldLeak")
     private class GetJSONTask extends AsyncTask<String, Void, String> {
 
         @Override
         protected String doInBackground(String... urls) {
             try {
-                return Utility.readJson("http://" + ipAdress + ":" + port + "/data.json");
+                return Utilities.readJson("http://" + ipAdress + ":" + port + "/data.json");
             } catch (TimeoutException e) {
                 e.printStackTrace();
             }
@@ -151,7 +214,8 @@ public class Login extends AppCompatActivity {
             //get JSON and write the Data to Textbox
             JSONArray jsonData = (JSONArray) jsonHelper.get("data");
             json = (JSONObject) jsonData.get(0);
-            new GetPlantNames().execute();
+            new WeatherTask().execute("http://" + ipAdress + ":" + port + "/api/weather");
+            //new GetPlantNames().execute();
 
         }
     }
@@ -164,7 +228,7 @@ public class Login extends AppCompatActivity {
         @Override
         protected String doInBackground(String... urls) {
             try {
-                return Utility.readPlantNames("http://" + ipAdress + ":" + port + "/plantNames.json");
+                return Utilities.readPlantNames("http://" + ipAdress + ":" + port + "/plantNames.json");
             } catch (TimeoutException e) {
                 e.printStackTrace();
             }
@@ -199,7 +263,7 @@ public class Login extends AppCompatActivity {
 
             Intent homeIntent = new Intent(Login.this, Main.class);
             Bundle b = new Bundle();
-            b.putAll(Utility.jsonToBundle(json));
+            b.putAll(Utilities.jsonToBundle(json));
             b.putString("ipadress", ipAdress);
             b.putInt("port", port);
             homeIntent.putExtras(b);

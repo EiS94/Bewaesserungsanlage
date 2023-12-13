@@ -22,7 +22,7 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.concurrent.TimeoutException;
 
-public class Utility {
+public class Utilities {
 
     private static String passwordHash = "6941bea706c4231b322a29b91fe6701c4d5e89f3e32f4c84f49b84caf0486b96";
 
@@ -128,18 +128,6 @@ public class Utility {
             }
             return sb.toString();
         }
-        /*JSONArray array = null;
-        try {
-            array = new JSONArray(sb.toString());
-        } catch (JSONException e) {
-            e.printStackTrace();
-            return null;
-        }
-        List<JSONObject> jsonObjects = new ArrayList<>();
-        for (int i = 0; i < array.length(); i++) {
-            jsonObjects.add((JSONObject) array.get(i));
-        }
-        return jsonObjects;*/
         else throw new TimeoutException("Server unreachable");
     }
 
@@ -231,6 +219,25 @@ public class Utility {
             return sb.toString();
         }
         else throw new TimeoutException("Server unreachable");
+    }
+
+    public static String convertRainIntensity(String rainString) {
+        switch (rainString) {
+            case "NONE":
+                return "Kein Regen";
+            case "DRIZZLE":
+                return "Nieselregen";
+            case "LIGHT_RAIN":
+                return "leichter Regen";
+            case "MODERATE_RAIN":
+                return "durchgängiger Regen";
+            case "HEAVY_RAIN":
+                return "starker Regen";
+            case "VERY_HEAVY_RAIN":
+                return "sehr starker Regen";
+            default:
+                return "Unbekannt";
+        }
     }
 
 }

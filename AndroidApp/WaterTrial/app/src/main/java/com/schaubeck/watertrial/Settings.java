@@ -91,7 +91,7 @@ public class Settings extends AppCompatActivity {
 
                 Intent homeIntent = new Intent(Settings.this, Main.class);
                 try {
-                    homeIntent.putExtras(Utility.jsonToBundle(json));
+                    homeIntent.putExtras(Utilities.jsonToBundle(json));
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
