@@ -8,10 +8,10 @@ import pytz
 import dateutil.parser
 import requests
 
-from forecast.authentication import get_auth_key
-from forecast.forecast import Forecast
-from past.authentication import get_oauth_key
-from rain_intensity import RainIntensity
+from weather.forecast.authentication import get_auth_key
+from weather.forecast.forecast import Forecast
+from weather.past.authentication import get_oauth_key
+from weather.rain_intensity import RainIntensity
 
 
 def get_rain_intensity(precip):
@@ -38,6 +38,8 @@ def format_datetime(datetime_to_format):
 
 
 def get_weather_data(current_time=datetime.now()):
+    script_dir = os.path.dirname(os.path.realpath(__file__))
+
     """
     use this to get hourly info from the last 24 hours
 
@@ -46,10 +48,12 @@ def get_weather_data(current_time=datetime.now()):
           "Z:PT1H/t_2m:C,precip_1h:mm,precip_24h:mm,sunrise:sql,sunset:sql,uv:idx,wind_speed_10m:kmh" + \
           "/49.995934,8.230993/csv?access_token=" + token
     """
+    # get the path in windows and linux
+    access_data_path = os.path.join(script_dir, "past", "access_data.txt")
     # use this url to get info of the last hour and last 24 hours
     url = "https://api.meteomatics.com/" + current_time.isoformat() + "Z/t_2m:C,precip_1h:mm,precip_24h:mm," + \
           "sunrise:sql,sunset:sql,uv:idx,wind_speed_10m:kmh" + "/49.995934,8.230993/csv?access_token=" + \
-          get_oauth_key(os.getcwd() + "\\past\\access_data.txt")
+          get_oauth_key(access_data_path)
 
     request = requests.get(url)
     if request.status_code == 200:
@@ -57,9 +61,11 @@ def get_weather_data(current_time=datetime.now()):
     else:
         raise Exception("Error while getting past weather data")
 
+    # get the path in windows and linux
+    forecast_api_key_path = os.path.join(script_dir, "forecast", "api_key.txt")
     # use this url to get forecast info (next 3 hours)
     url = "https://api.openweathermap.org/data/2.5/forecast?lat=49.995934&lon=8.230993&units=metric&cnt=10" + \
-          "&appid=" + get_auth_key(os.getcwd() + "\\forecast\\api_key.txt")
+          "&appid=" + get_auth_key(forecast_api_key_path)
     request = requests.get(url)
     if request.status_code == 200:
         forecast_data = json.loads(request.text)
@@ -112,8 +118,8 @@ class WeatherData:
         self.min_temp_forecast = min_temp
         self.max_temp_forecast = max_temp
         self.description_forecast = list(description_dict.keys())[0]
-        return "\n  - Forecast:\n    - max. Temp: " + str(max_temp) + "°C\n    - min. Temp: " + str(min_temp) + \
-            "°C\n    - Rain: " + self.precip_forecast.name + "\n    - Description: " + self.description_forecast
+        return "\n  - Forecast:\n    - max. Temp: " + str(max_temp) + "Â°C\n    - min. Temp: " + str(min_temp) + \
+            "Â°C\n    - Rain: " + self.precip_forecast.name + "\n    - Description: " + self.description_forecast
 
     def is_after_sunset(self):
         # transformation is needed to compare times
@@ -200,23 +206,12 @@ class WeatherData:
 
     def __str__(self):
         return format_datetime(self.datetime) + "\n  - Temperature: " + str(self.temperature) + \
-            "°C\n  - Description: " + self.description + "\n  - Rain past Hour: " + \
+            "Â°C\n  - Description: " + self.description + "\n  - Rain past Hour: " + \
             self.precip_past_hour.name + "\n  - Rain past 24 hours: " + \
             self.precip_past_24_hours.name + "\n  - Wind Speed: " + str(self.wind_speed_kmh) + \
             " km/h\n  - UV-Index: " + str(self.uv_index) + "\n  - Sunrise: " + \
             format_datetime(utc_to_local(self.sunrise)) + "\n  - Sunset:  " + \
             format_datetime(utc_to_local(self.sunset)) + self.forecast_summary
-
-
-def run_weather_data_thread():
-    try:
-        while (True):
-            wd = get_weather_data()
-            wd.to_json()
-            time.sleep(60 * 30)
-    except KeyboardInterrupt:
-        print("Ctrl+C pressed")
-        sys.exit(1)
 
 
 if __name__ == "__main__":

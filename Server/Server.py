@@ -5,7 +5,8 @@ import JsonWriter
 import netifaces as ni
 import sys
 import signal
-import wheaterData as wD
+# import wheaterData as wD
+import weather.weather_data as wd
 from _thread import start_new_thread
 import time
 from datetime import datetime
@@ -32,7 +33,7 @@ def getIpAddress():
 
 
 # start new Thread to write the sensor datas to a file in background
-start_new_thread(wD.writeData, ())
+# start_new_thread(wD.writeData, ())
 start_new_thread(ValveHandler.calcuteValveStatus, ())
 
 app = Flask(__name__)
@@ -141,6 +142,12 @@ def shutdown():
 @app.route('/wheaterData.txt')
 def writeWheaterData():
     return send_file("wheater.txt", cache_timeout=0)
+
+
+@app.route("/api/weather", methods=["GET"])
+def handle_weather_get_request():
+    # if request.method == "POST":
+    return wd.get_weather_data().to_json()
 
 
 # show log-File
@@ -298,7 +305,7 @@ def handleDishes():
 
 # starts the server
 if __name__ == '__main__':
-    app.run(debug=True, host="192.168.178.26")
+    app.run(debug=True, host="0.0.0.0")
 
 
 # stops the valve, when server is stoppped with CTRL+C
