@@ -63,18 +63,6 @@
         app:layout_constraintStart_toEndOf="@+id/switchWaterValve"
         app:layout_constraintTop_toTopOf="@+id/switchWaterValve" />
 
-    <!--
-    <ImageView
-        android:id="@+id/gifLoad"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="45dp"
-        app:layout_constraintEnd_toEndOf="@+id/garden"
-        app:layout_constraintStart_toStartOf="@+id/garden"
-        app:layout_constraintTop_toBottomOf="@id/garden"
-        tools:srcCompat="@tools:sample/avatars" />
-        -->
-
     <TextView
         android:id="@+id/textTitle"
         android:layout_width="wrap_content"
@@ -138,16 +126,6 @@
         app:layout_constraintEnd_toEndOf="@+id/btnUpdate2"
         app:layout_constraintStart_toStartOf="@+id/btnUpdate2"
         app:layout_constraintTop_toBottomOf="@+id/btnUpdate2" />
-
-    <!--
-    <ImageView
-        android:id="@+id/garden"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/switchWaterValve"
-        app:srcCompat="@drawable/ic_allplantsok" />
-        -->
 
     <com.richpath.RichPathView
         android:id="@+id/gardenNew"

@@ -1,12 +1,12 @@
 package com.schaubeck.watertrial;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.DashPathEffect;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.MotionEvent;
-import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,13 +29,14 @@ import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.concurrent.TimeoutException;
 
 public class Charts extends AppCompatActivity implements OnChartGestureListener, OnChartValueSelectedListener {
 
     private LineChart lineChart;
-    private ArrayList<String> entrys = new ArrayList<>();
-    private ArrayList<Entry> yValues = new ArrayList<>();
+    private final ArrayList<String> entrys = new ArrayList<>();
+    private final ArrayList<Entry> yValues = new ArrayList<>();
 
     Button back;
 
@@ -45,17 +46,14 @@ public class Charts extends AppCompatActivity implements OnChartGestureListener,
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_charts);
 
-        lineChart = (LineChart) findViewById(R.id.chart);
-        back = (Button) findViewById(R.id.btnBack);
+        lineChart = findViewById(R.id.chart);
+        back = findViewById(R.id.btnBack);
 
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent homeIntent = new Intent(Charts.this, Main.class);
-                homeIntent.putExtras(getIntent().getExtras());
-                startActivity(homeIntent);
-                finish();
-            }
+        back.setOnClickListener(v -> {
+            Intent homeIntent = new Intent(Charts.this, Main.class);
+            homeIntent.putExtras(Objects.requireNonNull(getIntent().getExtras()));
+            startActivity(homeIntent);
+            finish();
         });
 
         lineChart.setOnChartGestureListener(Charts.this);
@@ -63,14 +61,14 @@ public class Charts extends AppCompatActivity implements OnChartGestureListener,
         lineChart.setDragEnabled(true);
         lineChart.setScaleEnabled(true);
 
-        new OnlineFileReader().execute("http://" + Login.ipAdress + ":" + Login.port + "/wheaterData.txt");
+        new OnlineFileReader().execute("http://" + Login.ipAddress + ":" + Login.port + "/wheaterData.txt");
 
     }
 
     @Override
     public void onBackPressed() {
         Intent homeIntent = new Intent(Charts.this, Main.class);
-        homeIntent.putExtras(getIntent().getExtras());
+        homeIntent.putExtras(Objects.requireNonNull(getIntent().getExtras()));
         startActivity(homeIntent);
         finish();
     }
@@ -125,11 +123,11 @@ public class Charts extends AppCompatActivity implements OnChartGestureListener,
 
     }
 
+    @SuppressLint("StaticFieldLeak")
     public class OnlineFileReader extends AsyncTask<String, Void, Void> {
 
         @Override
         protected Void doInBackground(String... strings) {
-            ArrayList<String> lines = null;
 
             URL url = null;
             try {
@@ -139,11 +137,13 @@ public class Charts extends AppCompatActivity implements OnChartGestureListener,
             }
             HttpURLConnection con = null;
             try {
+                assert url != null;
                 con = (HttpURLConnection) url.openConnection();
             } catch (IOException e) {
                 e.printStackTrace();
             }
             try {
+                assert con != null;
                 con.setRequestMethod("GET");
             } catch (ProtocolException e) {
                 e.printStackTrace();
@@ -170,7 +170,8 @@ public class Charts extends AppCompatActivity implements OnChartGestureListener,
                 }
                 while (true) {
                     try {
-                        if (!((buffer = reader.readLine()) != null)) break;
+                        assert reader != null;
+                        if ((buffer = reader.readLine()) == null) break;
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -187,7 +188,6 @@ public class Charts extends AppCompatActivity implements OnChartGestureListener,
 
         @Override
         protected void onPostExecute(Void aVoid) {
-            int counter = 0;
             for (String entry : entrys) {
                 String[] split = entry.split(",");
                 yValues.add(new Entry(Utilities.getTime(split[0]), Float.parseFloat(split[1])));

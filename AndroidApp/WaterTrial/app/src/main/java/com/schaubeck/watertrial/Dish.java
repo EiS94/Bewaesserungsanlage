@@ -12,12 +12,14 @@ public class Dish {
         this.veggy = veggy;
     }
 
+    /*
     public Dish(String name, String url, String zutaten, boolean veggy) {
         this.name = name;
         this.url = url;
         this.zutaten = zutaten;
         this.veggy = veggy;
     }
+     */
 
     public String getName() {
         return name;
@@ -47,9 +49,11 @@ public class Dish {
         return veggy;
     }
 
+    /*
     public void setVeggy(boolean veggy) {
         this.veggy = veggy;
     }
+     */
 
     @NonNull
     @Override

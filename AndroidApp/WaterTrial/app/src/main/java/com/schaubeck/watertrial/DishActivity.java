@@ -89,7 +89,7 @@ public class DishActivity extends AppCompatActivity {
         tb.setColumnCount(2);
         tb.setColumnWeight(0, 4);
 
-        new OnlineFileReader().execute("http://" + Login.ipAdress + ":" + Login.port + "/dishes.csv");
+        new OnlineFileReader().execute("http://" + Login.ipAddress + ":" + Login.port + "/dishes.csv");
 
         tb.addDataClickListener((rowIndex, clickedData) -> {
             currentClicked = clickedData[0];
@@ -203,7 +203,7 @@ public class DishActivity extends AppCompatActivity {
         btnAddNewDish.setOnClickListener(v -> handleAddNewDish());
 
         btnDelete.setOnClickListener(v -> {
-            new ValveChanger().execute("http://" + Login.ipAdress + ":" + Login.port +
+            new ValveChanger().execute("http://" + Login.ipAddress + ":" + Login.port +
                     "/dishHandler?mode=remove&name=" + currentClicked);
             dishBackground.setVisibility(View.INVISIBLE);
             dishName.setVisibility(View.INVISIBLE);
@@ -214,7 +214,7 @@ public class DishActivity extends AppCompatActivity {
 
             addDishActive = false;
 
-            new OnlineFileReader().execute("http://" + Login.ipAdress + ":" + Login.port + "/dishes.csv");
+            new OnlineFileReader().execute("http://" + Login.ipAddress + ":" + Login.port + "/dishes.csv");
 
             Toast.makeText(getApplicationContext(), currentClicked + " gelöscht", Toast.LENGTH_SHORT).show();
         });
@@ -521,11 +521,11 @@ public class DishActivity extends AppCompatActivity {
 
         if (!url.equals("") && !zutaten.equals("") && !name.equals("")) {
             if (veggy) {
-                new ValveChanger().execute("http://" + Login.ipAdress + ":" + Login.port +
+                new ValveChanger().execute("http://" + Login.ipAddress + ":" + Login.port +
                         "/dishHandler?mode=edit&name=" + name + "&veggy=yes&url=" + url
                         + "&ingredients=" + zutaten + "&oldName=" + currentClicked);
             } else {
-                new ValveChanger().execute("http://" + Login.ipAdress + ":" + Login.port +
+                new ValveChanger().execute("http://" + Login.ipAddress + ":" + Login.port +
                         "/dishHandler?mode=edit&name=" + name + "&veggy=no&url=" + url
                         + "&ingredients=" + zutaten + "&oldName=" + currentClicked);
             }
@@ -533,36 +533,36 @@ public class DishActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Name darf nicht leer sein", Toast.LENGTH_SHORT).show();
         } else if (!url.equals("")) {
             if (veggy) {
-                new ValveChanger().execute("http://" + Login.ipAdress + ":" + Login.port +
+                new ValveChanger().execute("http://" + Login.ipAddress + ":" + Login.port +
                         "/dishHandler?mode=edit&name=" + name + "&veggy=yes&url=" + url
                         + "&oldName=" + currentClicked);
             } else {
-                new ValveChanger().execute("http://" + Login.ipAdress + ":" + Login.port +
+                new ValveChanger().execute("http://" + Login.ipAddress + ":" + Login.port +
                         "/dishHandler?mode=edit&name=" + name + "&veggy=no&url=" + url
                         + "&oldName=" + currentClicked);
             }
         } else if (!zutaten.equals("")) {
             if (veggy) {
-                new ValveChanger().execute("http://" + Login.ipAdress + ":" + Login.port +
+                new ValveChanger().execute("http://" + Login.ipAddress + ":" + Login.port +
                         "/dishHandler?mode=edit&name=" + name + "&veggy=yes&ingredients=" + zutaten
                         + "&oldName=" + currentClicked);
             } else {
-                new ValveChanger().execute("http://" + Login.ipAdress + ":" + Login.port +
+                new ValveChanger().execute("http://" + Login.ipAddress + ":" + Login.port +
                         "/dishHandler?mode=edit&name=" + name + "&veggy=no&&ingredients=" + zutaten
                         + "&oldName=" + currentClicked);
             }
         } else {
             if (veggy) {
-                new ValveChanger().execute("http://" + Login.ipAdress + ":" + Login.port +
+                new ValveChanger().execute("http://" + Login.ipAddress + ":" + Login.port +
                         "/dishHandler?mode=edit&name=" + name + "&veggy=yes"
                         + "&oldName=" + currentClicked);
             } else {
-                new ValveChanger().execute("http://" + Login.ipAdress + ":" + Login.port +
+                new ValveChanger().execute("http://" + Login.ipAddress + ":" + Login.port +
                         "/dishHandler?mode=edit&name=" + name + "&veggy=no"
                         + "&oldName=" + currentClicked);
             }
         }
-        new OnlineFileReader().execute("http://" + Login.ipAdress + ":" + Login.port + "/dishes.csv");
+        new OnlineFileReader().execute("http://" + Login.ipAddress + ":" + Login.port + "/dishes.csv");
         closeNewDishMenu();
     }
 
@@ -574,11 +574,11 @@ public class DishActivity extends AppCompatActivity {
 
         if (!url.equals("") && !zutaten.equals("") && !name.equals("")) {
             if (veggy) {
-                new ValveChanger().execute("http://" + Login.ipAdress + ":" + Login.port +
+                new ValveChanger().execute("http://" + Login.ipAddress + ":" + Login.port +
                         "/dishHandler?mode=new&name=" + name + "&veggy=yes&url=" + url
                         + "&ingredients=" + zutaten);
             } else {
-                new ValveChanger().execute("http://" + Login.ipAdress + ":" + Login.port +
+                new ValveChanger().execute("http://" + Login.ipAddress + ":" + Login.port +
                         "/dishHandler?mode=new&name=" + name + "&veggy=no&url=" + url
                         + "&ingredients=" + zutaten);
             }
@@ -586,30 +586,30 @@ public class DishActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Name darf nicht leer sein", Toast.LENGTH_SHORT).show();
         } else if (!url.equals("")) {
             if (veggy) {
-                new ValveChanger().execute("http://" + Login.ipAdress + ":" + Login.port +
+                new ValveChanger().execute("http://" + Login.ipAddress + ":" + Login.port +
                         "/dishHandler?mode=new&name=" + name + "&veggy=yes&url=" + url);
             } else {
-                new ValveChanger().execute("http://" + Login.ipAdress + ":" + Login.port +
+                new ValveChanger().execute("http://" + Login.ipAddress + ":" + Login.port +
                         "/dishHandler?mode=new&name=" + name + "&veggy=no&url=" + url);
             }
         } else if (!zutaten.equals("")) {
             if (veggy) {
-                new ValveChanger().execute("http://" + Login.ipAdress + ":" + Login.port +
+                new ValveChanger().execute("http://" + Login.ipAddress + ":" + Login.port +
                         "/dishHandler?mode=new&name=" + name + "&veggy=yes&ingredients=" + zutaten);
             } else {
-                new ValveChanger().execute("http://" + Login.ipAdress + ":" + Login.port +
+                new ValveChanger().execute("http://" + Login.ipAddress + ":" + Login.port +
                         "/dishHandler?mode=new&name=" + name + "&veggy=no&&ingredients=" + zutaten);
             }
         } else {
             if (veggy) {
-                new ValveChanger().execute("http://" + Login.ipAdress + ":" + Login.port +
+                new ValveChanger().execute("http://" + Login.ipAddress + ":" + Login.port +
                         "/dishHandler?mode=new&name=" + name + "&veggy=yes");
             } else {
-                new ValveChanger().execute("http://" + Login.ipAdress + ":" + Login.port +
+                new ValveChanger().execute("http://" + Login.ipAddress + ":" + Login.port +
                         "/dishHandler?mode=new&name=" + name + "&veggy=no");
             }
         }
-        new OnlineFileReader().execute("http://" + Login.ipAdress + ":" + Login.port + "/dishes.csv");
+        new OnlineFileReader().execute("http://" + Login.ipAddress + ":" + Login.port + "/dishes.csv");
         closeNewDishMenu();
     }
 

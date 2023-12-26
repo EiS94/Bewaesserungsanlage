@@ -13,6 +13,7 @@ public class ValveChanger extends AsyncTask<String, Void, Void> {
 
     @Override
     protected Void doInBackground(String... strings) {
+
         URL url = null;
         try {
             url = new URL(strings[0]);

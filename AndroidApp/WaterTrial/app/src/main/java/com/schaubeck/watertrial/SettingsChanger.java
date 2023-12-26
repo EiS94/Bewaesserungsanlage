@@ -21,27 +21,19 @@ public class SettingsChanger extends AsyncTask<String, Void, Void> {
         }
         HttpURLConnection con = null;
         try {
+            assert url != null;
             con = (HttpURLConnection) url.openConnection();
         } catch (IOException e) {
             e.printStackTrace();
         }
         try {
+            assert con != null;
             con.setRequestMethod("GET");
         } catch (ProtocolException e) {
             e.printStackTrace();
         }
         con.setConnectTimeout(5000);
         con.setReadTimeout(5000);
-        int status = 0;
-        try {
-            status = con.getResponseCode();
-        } catch (IOException e) {
-            try {
-                throw new TimeoutException("Server unreachable");
-            } catch (TimeoutException ex) {
-                ex.printStackTrace();
-            }
-        }
         return null;
     }
 

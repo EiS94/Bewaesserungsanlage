@@ -1,4 +1,6 @@
 # -*- coding: UTF-8 -*-
+import json
+
 from flask import Flask, render_template, send_from_directory, send_file
 from flask import request
 import JsonWriter
@@ -146,8 +148,10 @@ def writeWheaterData():
 
 @app.route("/api/weather", methods=["GET"])
 def handle_weather_get_request():
-    # if request.method == "POST":
-    return wd.get_weather_data().to_json()
+    try:
+        return wd.get_weather_data().to_json()
+    except:
+        return json.dumps({"date": str(datetime.now())})
 
 
 # show log-File

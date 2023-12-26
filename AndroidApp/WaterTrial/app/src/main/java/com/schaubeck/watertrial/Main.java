@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.media.MediaPlayer;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
@@ -18,7 +17,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
-import com.devs.vectorchildfinder.VectorChildFinder;
 import com.richpath.RichPath;
 import com.richpath.RichPathView;
 
@@ -26,32 +24,26 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.net.InetAddress;
-import java.net.Socket;
-import java.net.UnknownHostException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
-import java.util.concurrent.TimeoutException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class Main extends AppCompatActivity {
 
     //UI Element
     private Switch switchWaterOnOff;
-    private TextView textOn, textOff, textWater, textTitle, textData, textPassword, textServerAddress, textGarden;
-    private Button chartActivity, changeColor, settings, dishesActivity;
-    private ImageButton update2;
-    //private ImageView garden;
+    private TextView textData;
     private ProgressBar progressBar;
     private RichPathView richPathView;
 
     //Variables
-    public static String CMD = "0";
     public static boolean valveStatus;
-    VectorChildFinder vector;
-    private JSONObject jsonHelper, weatherData;
+    private JSONObject data;
     private JSONObject json = new JSONObject();
     List<String> plantNames = new ArrayList<>();
 
@@ -59,31 +51,22 @@ public class Main extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
+        setContentView(R.layout.activity_main);
 
-        switchWaterOnOff = (Switch) findViewById(R.id.switchWaterValve);
-        textOn = (TextView) findViewById(R.id.textOn);
-        textOff = (TextView) findViewById(R.id.textOff);
-        textWater = (TextView) findViewById(R.id.textWater);
-        textTitle = (TextView) findViewById(R.id.textTitle);
-        textData = (TextView) findViewById(R.id.textData);
-        textPassword = (TextView) findViewById(R.id.textPassword);
-        textServerAddress = (TextView) findViewById(R.id.textServerAddress);
-        textGarden = (TextView) findViewById(R.id.textGarden);
-        chartActivity = (Button) findViewById(R.id.btnChartActivity);
-        dishesActivity = (Button) findViewById(R.id.btnDishesActivity);
-        settings = (Button) findViewById(R.id.settings);
-        update2 = (ImageButton) findViewById(R.id.btnUpdate2);
-        //gifLoad = (ImageView) findViewById(R.id.gifLoad);
-        //garden = (ImageView) findViewById(R.id.garden);
-        progressBar = (ProgressBar) findViewById(R.id.progressBarMain);
-        richPathView = (RichPathView) findViewById(R.id.gardenNew);
+        switchWaterOnOff = findViewById(R.id.switchWaterValve);
+        textData = findViewById(R.id.textData);
+        Button chartActivity = findViewById(R.id.btnChartActivity);
+        Button dishesActivity = findViewById(R.id.btnDishesActivity);
+        Button settings = findViewById(R.id.settings);
+        ImageButton update = findViewById(R.id.btnUpdate2);
+        progressBar = findViewById(R.id.progressBarMain);
+        richPathView = findViewById(R.id.gardenNew);
 
         final MediaPlayer schorschVoice = MediaPlayer.create(this, R.raw.schorsch);
         final MediaPlayer heidiVoice = MediaPlayer.create(this, R.raw.heidi);
         final MediaPlayer wandaVoice = MediaPlayer.create(this, R.raw.wanda);
 
-        getSupportActionBar().hide();
+        Objects.requireNonNull(getSupportActionBar()).hide();
 
         //fit garden picture to display size
         DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
@@ -95,15 +78,14 @@ public class Main extends AppCompatActivity {
         ConstraintLayout.LayoutParams lp = new ConstraintLayout.LayoutParams(dpWidthInPx, dpHeightInPx);
         richPathView.setLayoutParams(lp);
         switchWaterOnOff.bringToFront();
-        update2.bringToFront();
+        update.bringToFront();
         settings.bringToFront();
         chartActivity.bringToFront();
-
-        //vector = new VectorChildFinder(this, R.drawable.ic_allplantsok, garden);
 
         Bundle bundle = getIntent().getExtras();
 
         //write Bundle items to json
+        assert bundle != null;
         Set<String> keys = bundle.keySet();
         for (String key : keys) {
             try {
@@ -114,6 +96,7 @@ public class Main extends AppCompatActivity {
         }
 
         // write weather-data to separate jsonObject
+        JSONObject weatherData;
         try {
             weatherData = new JSONObject((String) json.get("weather"));
         } catch (JSONException e) {
@@ -124,17 +107,7 @@ public class Main extends AppCompatActivity {
         String dataText = null;
         try {
             JSONObject actual = weatherData.getJSONObject("actual");
-            dataText = "Temperatur: " + actual.get("temperature") + "°C\n";
-            dataText += "Beschreibung: " + actual.get("description") + "\n";
-            dataText += "Windgeschwindigkeit: " + actual.get("wind") + " km/h\n";
-            dataText += "Regen in letzter Stunde: " + Utilities.convertRainIntensity((String) actual.get("rain_1h")) + "\n";
-            dataText += "Regen in letzten 24 Stunden: " + Utilities.convertRainIntensity((String) actual.get("rain_24h"));
-            /*
-            dataText = "Temperatur: " + json.get("temperatur") + "°C\nLuftfeuchtigkeit: " +
-                    json.get("wetness") + " %" + "\nRegen: " + json.get("rain")  + "\nHelligkeit : " +
-                    json.get("illuminance") + " lx" + "\nZeit : "
-                    + Utility.getTime(((String) json.get("timestamp")));
-             */
+            dataText = getActualWeatherAsString(actual);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -150,23 +123,22 @@ public class Main extends AppCompatActivity {
 
         //set SwitchButton wheater if valve is on or off
         try {
-            if (json.get("valve").equals("an")) valveStatus = true;
-            else valveStatus = false;
+            valveStatus = json.get("valve").equals("an");
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        if (valveStatus) switchWaterOnOff.setChecked(true);
-        else switchWaterOnOff.setChecked(false);
+        switchWaterOnOff.setChecked(valveStatus);
 
         //change colors of garden picture
         for (int i = 1; i <= 5; i++) {
             int color;
             Object status = null;
             try {
-                status = (String) json.get("plant" + i);
+                status = json.get("plant" + i);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+            assert status != null;
             if (status.equals("ausreichend bewässert")) color = 2;
             else if (status.equals("braucht Wasser")) color = 1;
             else color = 3;
@@ -174,42 +146,20 @@ public class Main extends AppCompatActivity {
         }
         changeSchorschColor();
         changeWandaColor();
-        //garden.invalidate();
 
 
-        richPathView.setOnPathClickListener(new RichPath.OnPathClickListener() {
-            @Override
-            public void onClick(RichPath richPath) {
-                String status = null;
-                String pValue = null;
-                int alertnativeValue = 0;
+        richPathView.setOnPathClickListener(richPath -> {
+            String status;
+            try {
                 try {
-                    try {
-                        status = plantNames.get(Integer.parseInt(richPath.getName())-1) + ": " + (String) json.get("plant" + richPath.getName())
-                                + " (" + (String) json.get("p" + richPath.getName() + "Value") + ")";
-                        Toast.makeText(getApplicationContext(), status, Toast.LENGTH_SHORT).show();
-                    } catch (ClassCastException e) {
-                        status = plantNames.get(Integer.parseInt(richPath.getName())-1) + ": " + (String) json.get("plant" + richPath.getName())
-                                + " (" + (Integer) json.get("p" + richPath.getName() + "Value") + ")";
-                        Toast.makeText(getApplicationContext(), status, Toast.LENGTH_SHORT).show();
-                    } catch (NumberFormatException e) {
-                        e.printStackTrace();
-                        if (richPath.getName().equals("schorsch")) {
-                            if (richPath.getFillColor() == Color.BLACK) {
-                                Toast.makeText(getApplicationContext(), "Schorsch", Toast.LENGTH_SHORT).show();
-                                schorschVoice.start();
-                            } else {
-                                Toast.makeText(getApplicationContext(), "Heidi", Toast.LENGTH_SHORT).show();
-                                heidiVoice.start();
-                            }
-                        } else if (richPath.getName().equals("wanda")) {
-                            if (richPath.getFillColor() == Color.BLACK) {
-                                Toast.makeText(getApplicationContext(), "Wanda", Toast.LENGTH_SHORT).show();
-                                wandaVoice.start();
-                            }
-                        }
-                    }
-                } catch (JSONException e) {
+                    status = plantNames.get(Integer.parseInt(richPath.getName()) - 1) + ": " + json.get("plant" + richPath.getName())
+                            + " (" + json.get("p" + richPath.getName() + "Value") + ")";
+                    Toast.makeText(getApplicationContext(), status, Toast.LENGTH_SHORT).show();
+                } catch (ClassCastException e) {
+                    status = plantNames.get(Integer.parseInt(richPath.getName()) - 1) + ": " + json.get("plant" + richPath.getName())
+                            + " (" + json.get("p" + richPath.getName() + "Value") + ")";
+                    Toast.makeText(getApplicationContext(), status, Toast.LENGTH_SHORT).show();
+                } catch (NumberFormatException e) {
                     e.printStackTrace();
                     if (richPath.getName().equals("schorsch")) {
                         if (richPath.getFillColor() == Color.BLACK) {
@@ -226,224 +176,163 @@ public class Main extends AppCompatActivity {
                         }
                     }
                 }
-            }
-        });
-
-        switchWaterOnOff.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (switchWaterOnOff.isChecked()) {
-                    valveStatus = true;
-                    new ValveChanger().execute("http://" + Login.ipAdress + ":" + Login.port + "/v?valve=on");
-                } else {
-                    valveStatus = false;
-                    new ValveChanger().execute("http://" + Login.ipAdress + ":" + Login.port + "/v?valve=off");
+            } catch (JSONException e) {
+                e.printStackTrace();
+                if (richPath.getName().equals("schorsch")) {
+                    if (richPath.getFillColor() == Color.BLACK) {
+                        Toast.makeText(getApplicationContext(), "Schorsch", Toast.LENGTH_SHORT).show();
+                        schorschVoice.start();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Heidi", Toast.LENGTH_SHORT).show();
+                        heidiVoice.start();
+                    }
+                } else if (richPath.getName().equals("wanda")) {
+                    if (richPath.getFillColor() == Color.BLACK) {
+                        Toast.makeText(getApplicationContext(), "Wanda", Toast.LENGTH_SHORT).show();
+                        wandaVoice.start();
+                    }
                 }
             }
         });
 
-        /*switchWaterOnOff.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (!valveStatus) {
-                    valveStatus = true;
-                    new ValveChanger().execute("http://" + ipAdress + ":" + port + "/v?valve=on");
-                } else {
-                    valveStatus = false;
-                    new ValveChanger().execute("http://" + ipAdress + ":" + port + "/v?valve=off");
-                }
-
-            }
-        });*/
-
-        update2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //updateVector();
-                //gifLoad.setVisibility(View.VISIBLE);
-                progressBar.setVisibility(View.VISIBLE);
-                new GetJSONTask().execute();
+        switchWaterOnOff.setOnClickListener(v -> {
+            if (switchWaterOnOff.isChecked()) {
+                valveStatus = true;
+                new ValveChanger().execute("http://" + Login.ipAddress + ":" + Login.port + "/v?valve=on");
+            } else {
+                valveStatus = false;
+                new ValveChanger().execute("http://" + Login.ipAddress + ":" + Login.port + "/v?valve=off");
             }
         });
 
-        chartActivity.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent homeIntent = new Intent(Main.this, Charts.class);
-                try {
-                    homeIntent.putExtras(Utilities.jsonToBundle(json));
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                startActivity(homeIntent);
-                finish();
-            }
+        update.setOnClickListener(view -> {
+            progressBar.setVisibility(View.VISIBLE);
+            final Map<String, String> backgroundTaskResults = new HashMap<>();
+            ExecutorService executor = Executors.newSingleThreadExecutor();
+            executor.execute(() -> {
+                backgroundTaskResults.put("data", NetworkUtils.getRequest("http://" + Login.ipAddress + ":" + Login.port + "/data.json"));
+                backgroundTaskResults.put("plantNames", NetworkUtils.getRequest("http://" + Login.ipAddress + ":" + Login.port + "/plantNames.json"));
+                backgroundTaskResults.put("weather", NetworkUtils.getRequest("http://" + Login.ipAddress + ":" + Login.port + "/api/weather"));
+
+                runOnUiThread(() -> {
+                            try {
+                                data = new JSONObject(Objects.requireNonNull(backgroundTaskResults.get("data")));
+                                JSONArray jsonData = (JSONArray) data.get("data");
+                                json = (JSONObject) jsonData.get(0);
+                                valveStatus = json.get("valve").equals("an");
+                                switchWaterOnOff.setChecked(valveStatus);
+
+                                //set actual weather data
+                                JSONObject wd = new JSONObject(Objects.requireNonNull(backgroundTaskResults.get("weather")));
+                                try {
+                                    JSONObject actual = wd.getJSONObject("actual");
+                                    String weatherText = getActualWeatherAsString(actual);
+                                    textData.setText(weatherText);
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+
+                                //change Colors of the Plants
+                                for (int i = 1; i <= 5; i++) {
+                                    int color;
+                                    Object status = json.get("plant" + i);
+                                    if (status.equals("ausreichend bewässert")) color = 2;
+                                    else if (status.equals("braucht Wasser")) color = 1;
+                                    else color = 3;
+                                    changeColor(i, color);
+                                }
+                                changeSchorschColor();
+                                changeWandaColor();
+
+                                progressBar.setVisibility(View.INVISIBLE);
+
+                            } catch (JSONException e) {
+                                throw new RuntimeException(e);
+                            }
+                        }
+                );
+            });
         });
 
-        dishesActivity.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent homeIntent = new Intent(Main.this, DishActivity.class);
-                try {
-                    homeIntent.putExtras(Utilities.jsonToBundle(json));
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                startActivity(homeIntent);
-                finish();
+        chartActivity.setOnClickListener(v -> {
+            Intent homeIntent = new Intent(Main.this, Charts.class);
+            try {
+                homeIntent.putExtras(Utilities.jsonToBundle(json));
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
+            startActivity(homeIntent);
+            finish();
         });
 
-        settings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent homeIntent = new Intent(Main.this, Settings.class);
-                try {
-                    homeIntent.putExtras(Utilities.jsonToBundle(json));
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                startActivity(homeIntent);
-                finish();
+        dishesActivity.setOnClickListener(v -> {
+            Intent homeIntent = new Intent(Main.this, DishActivity.class);
+            try {
+                homeIntent.putExtras(Utilities.jsonToBundle(json));
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
+            startActivity(homeIntent);
+            finish();
+        });
+
+        settings.setOnClickListener(v -> {
+            Intent homeIntent = new Intent(Main.this, Settings.class);
+            try {
+                homeIntent.putExtras(Utilities.jsonToBundle(json));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            startActivity(homeIntent);
+            finish();
         });
 
 
     }
 
-    /*public void updateVector() {
-        vector = new VectorChildFinder(this, R.drawable.ic_allplantsok, garden);
+    public String getActualWeatherAsString(JSONObject actual) throws JSONException {
+        String dataText;
+        dataText = "Temperatur: " + actual.get("temperature") + "°C\n";
+        dataText += "Beschreibung: " + actual.get("description") + "\n";
+        dataText += "Windgeschwindigkeit: " + actual.get("wind") + " km/h\n";
+        dataText += "Regen in letzter Stunde: " + Utilities.convertRainIntensity((String) actual.get("rain_1h")) + "\n";
+        dataText += "Regen in letzten 24 Stunden: " + Utilities.convertRainIntensity((String) actual.get("rain_24h"));
+        return dataText;
     }
-    */
 
     public void changeSchorschColor() {
-        //VectorDrawableCompat.VFullPath path1 = vector.findPathByName("schorsch");
         RichPath schorsch = richPathView.findRichPathByName("schorsch");
-        Double rd = Math.random();
-        if (rd > 0.8) schorsch.setFillColor(Color.WHITE);
-        else schorsch.setFillColor(Color.BLACK);
-        //if (rd > 0.8) path1.setFillColor(Color.WHITE);
-        //else path1.setFillColor(Color.BLACK);
+        double rd = Math.random();
+        assert schorsch != null;
+        if (rd > 0.8) {
+            schorsch.setFillColor(Color.WHITE);
+        } else {
+            schorsch.setFillColor(Color.BLACK);
+        }
     }
 
     public void changeWandaColor() {
-        //VectorDrawableCompat.VFullPath path1 = vector.findPathByName("wanda");
         RichPath wanda = richPathView.findRichPathByName("wanda");
-        Double rd = Math.random();
-        if (rd > 0.5) wanda.setFillColor(Color.BLACK);
-        else wanda.setFillColor(Color.parseColor("#d3f1cb"));
-        //if (rd > 0.5) path1.setFillColor(Color.BLACK);
+        double rd = Math.random();
+        assert wanda != null;
+        if (rd > 0.5) {
+            wanda.setFillColor(Color.BLACK);
+        } else {
+            wanda.setFillColor(Color.parseColor("#d3f1cb"));
+        }
     }
 
     public void changeColor(int plant, int color) {
-        //VectorDrawableCompat.VFullPath path1 = vector.findPathByName(Integer.toString(plant));
         RichPath p = richPathView.findRichPathByName(Integer.toString(plant));
-        if (color == 1) p.setFillColor(Color.RED);
-        else if (color == 2) p.setFillColor(Color.YELLOW);
-        else p.setFillColor(Color.parseColor("#0c6d00"));
-    }
-
-    public class Socket_AsyncTask extends AsyncTask<Void, Void, Void> {
-
-        Socket socket;
-
-        @Override
-        protected Void doInBackground(Void... params) {
-            try {
-                InetAddress inetAddress = InetAddress.getByName(Login.ipAdress);
-                socket = new java.net.Socket(inetAddress, Login.port);
-                DataOutputStream dataOutputStream = new DataOutputStream(socket.getOutputStream());
-                dataOutputStream.writeBytes(CMD);
-                dataOutputStream.close();
-                socket.close();
-            } catch (UnknownHostException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            return null;
-        }
-    }
-
-
-
-    private class GetJSONTask extends AsyncTask<String, Void, String> {
-
-        @Override
-        protected String doInBackground(String... urls) {
-            try {
-                return Utilities.readJson("http://" + Login.ipAdress + ":" + Login.port + "/data.json");
-            } catch (TimeoutException e) {
-                e.printStackTrace();
-            }
-            //Toast.makeText(getApplicationContext(),e.toString(),Toast.LENGTH_SHORT).show();
-            return null;
-        }
-
-        @Override
-        protected void onPreExecute() {
-            /*String url = "https://cdn.dribbble.com/users/1867579/screenshots/6580156/loadin_gif.gif";
-            Glide.with(Main.this)
-                    .load(url)
-                    .centerCrop()
-                    .into(gifLoad);*/
-            super.onPreExecute();
-        }
-
-        // onPostExecute displays the results of the doInBackgroud and also we
-        // can hide progress dialog.
-        @Override
-        protected void onPostExecute(String result) {
-            //write String to JSONObject
-            try {
-                jsonHelper = new JSONObject(result);
-                try {
-                    handlePostExecute();
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                Toast.makeText(getApplicationContext(), "Verbindung hergestellt", Toast.LENGTH_SHORT).show();
-                super.onPostExecute(result);
-            } catch (JSONException e) {
-                Toast.makeText(getApplicationContext(), "Verbindung zum Server nicht möglich", Toast.LENGTH_SHORT).show();
-                progressBar.setVisibility(View.INVISIBLE);
-                // gifLoad.setVisibility(View.GONE);
-            } catch (NullPointerException e) {
-                Toast.makeText(getApplicationContext(), "Verbindung zum Server nicht möglich", Toast.LENGTH_SHORT).show();
-                progressBar.setVisibility(View.INVISIBLE);
-                //gifLoad.setVisibility(View.GONE);
-            }
-        }
-
-        void handlePostExecute() throws JSONException {
-            //get JSON and write the Data to Textbox
-            JSONArray jsonData = (JSONArray) jsonHelper.get("data");
-            json = (JSONObject) jsonData.get(0);
-            String dataText = "Temperatur: " + json.get("temperatur") + "°C\nLuftfeuchtigkeit: " +
-                    json.get("wetness") + " %" + "\nRegen: " + json.get("rain") + "\nHelligkeit : " +
-                    json.get("illuminance") + " lx" + "\nZeit : "
-                    + Utilities.getTime(String.valueOf((Integer) json.get("timestamp")));
-            textData.setText(dataText);
-            if (json.get("valve").equals("an")) valveStatus = true;
-            else valveStatus = false;
-            if (valveStatus) switchWaterOnOff.setChecked(true);
-            else switchWaterOnOff.setChecked(false);
-
-            //change Colors of the Plants
-            for (int i = 1; i <= 5; i++) {
-                int color;
-                Object status = (String) json.get("plant" + i);
-                if (status.equals("ausreichend bewässert")) color = 2;
-                else if (status.equals("braucht Wasser")) color = 1;
-                else color = 3;
-                changeColor(i, color);
-            }
-            changeSchorschColor();
-            changeWandaColor();
-            //garden.invalidate();
-
-            progressBar.setVisibility(View.INVISIBLE);
-            //gifLoad.setVisibility(View.GONE);
+        if (color == 1) {
+            assert p != null;
+            p.setFillColor(Color.RED);
+        } else if (color == 2) {
+            assert p != null;
+            p.setFillColor(Color.YELLOW);
+        } else {
+            assert p != null;
+            p.setFillColor(Color.parseColor("#0c6d00"));
         }
     }
 }
