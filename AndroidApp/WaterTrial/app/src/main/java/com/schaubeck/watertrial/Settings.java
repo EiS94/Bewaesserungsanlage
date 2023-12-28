@@ -7,6 +7,8 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.schaubeck.watertrial.utils.Utilities;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 

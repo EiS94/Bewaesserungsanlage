@@ -9,16 +9,18 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
-import com.richpath.RichPath;
-import com.richpath.RichPathView;
+import com.schaubeck.watertrial.utils.NetworkUtils;
+import com.schaubeck.watertrial.utils.Utilities;
+import com.sdsmdg.harjot.vectormaster.VectorMasterView;
+import com.sdsmdg.harjot.vectormaster.models.PathModel;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -36,10 +38,12 @@ import java.util.concurrent.Executors;
 public class Main extends AppCompatActivity {
 
     //UI Element
+    @SuppressLint("UseSwitchCompatOrMaterialCode")
     private Switch switchWaterOnOff;
     private TextView textData;
     private ProgressBar progressBar;
-    private RichPathView richPathView;
+    //private RichPathView richPathView;
+    ImageView garden;
 
     //Variables
     public static boolean valveStatus;
@@ -47,7 +51,7 @@ public class Main extends AppCompatActivity {
     private JSONObject json = new JSONObject();
     List<String> plantNames = new ArrayList<>();
 
-    @SuppressLint("MissingInflatedId")
+    @SuppressLint({"MissingInflatedId", "ResourceType"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,7 +64,8 @@ public class Main extends AppCompatActivity {
         Button settings = findViewById(R.id.settings);
         ImageButton update = findViewById(R.id.btnUpdate2);
         progressBar = findViewById(R.id.progressBarMain);
-        richPathView = findViewById(R.id.gardenNew);
+        //richPathView = findViewById(R.id.gardenNew);
+        //garden = findViewById(R.id.garden);
 
         final MediaPlayer schorschVoice = MediaPlayer.create(this, R.raw.schorsch);
         final MediaPlayer heidiVoice = MediaPlayer.create(this, R.raw.heidi);
@@ -76,7 +81,8 @@ public class Main extends AppCompatActivity {
         int dpWidthInPx = (int) (dpWidth * scale);
         int dpHeightInPx = (int) (dpHeight * scale);
         ConstraintLayout.LayoutParams lp = new ConstraintLayout.LayoutParams(dpWidthInPx, dpHeightInPx);
-        richPathView.setLayoutParams(lp);
+        //richPathView.setLayoutParams(lp);
+        //richPathView.setVectorDrawable(R.id.gardenNew);
         switchWaterOnOff.bringToFront();
         update.bringToFront();
         settings.bringToFront();
@@ -121,7 +127,7 @@ public class Main extends AppCompatActivity {
             }
         }
 
-        //set SwitchButton wheater if valve is on or off
+        //set SwitchButton weather if valve is on or off
         try {
             valveStatus = json.get("valve").equals("an");
         } catch (JSONException e) {
@@ -142,12 +148,13 @@ public class Main extends AppCompatActivity {
             if (status.equals("ausreichend bewässert")) color = 2;
             else if (status.equals("braucht Wasser")) color = 1;
             else color = 3;
-            changeColor(i, color);
+            //changeColor(i, color);
         }
         changeSchorschColor();
         changeWandaColor();
 
 
+        /*
         richPathView.setOnPathClickListener(richPath -> {
             String status;
             try {
@@ -195,6 +202,9 @@ public class Main extends AppCompatActivity {
             }
         });
 
+         */
+
+
         switchWaterOnOff.setOnClickListener(v -> {
             if (switchWaterOnOff.isChecked()) {
                 valveStatus = true;
@@ -239,7 +249,7 @@ public class Main extends AppCompatActivity {
                                     if (status.equals("ausreichend bewässert")) color = 2;
                                     else if (status.equals("braucht Wasser")) color = 1;
                                     else color = 3;
-                                    changeColor(i, color);
+                                    //changeColor(i, color);
                                 }
                                 changeSchorschColor();
                                 changeWandaColor();
@@ -301,27 +311,23 @@ public class Main extends AppCompatActivity {
     }
 
     public void changeSchorschColor() {
-        RichPath schorsch = richPathView.findRichPathByName("schorsch");
+        VectorMasterView vectorMasterView = findViewById(R.id.garden);
+        PathModel schorsch = vectorMasterView.getPathModelByName("schorsch");
         double rd = Math.random();
-        assert schorsch != null;
-        if (rd > 0.8) {
-            schorsch.setFillColor(Color.WHITE);
-        } else {
-            schorsch.setFillColor(Color.BLACK);
-        }
+        if (rd > 0.8) schorsch.setFillColor(Color.WHITE);
+        else schorsch.setFillColor(Color.BLACK);
+        vectorMasterView.update();
     }
 
     public void changeWandaColor() {
-        RichPath wanda = richPathView.findRichPathByName("wanda");
+        VectorMasterView vectorMasterView = findViewById(R.id.garden);
+        PathModel wanda = vectorMasterView.getPathModelByName("wanda");
         double rd = Math.random();
-        assert wanda != null;
-        if (rd > 0.5) {
-            wanda.setFillColor(Color.BLACK);
-        } else {
-            wanda.setFillColor(Color.parseColor("#d3f1cb"));
-        }
+        if (rd > 0.5) wanda.setFillColor(Color.parseColor("#d3f1cb"));
+        else wanda.setFillColor(Color.BLACK);
+        vectorMasterView.update();
     }
-
+/*
     public void changeColor(int plant, int color) {
         RichPath p = richPathView.findRichPathByName(Integer.toString(plant));
         if (color == 1) {
@@ -335,4 +341,34 @@ public class Main extends AppCompatActivity {
             p.setFillColor(Color.parseColor("#0c6d00"));
         }
     }
+
+    private Path findPathByName(String name) {
+        try {
+            @SuppressLint("ResourceType") XmlResourceParser parser = getResources().getXml(R.drawable.ic_garden_update);
+            //@SuppressLint("ResourceType") XmlPullParser parser = getResources().getXml(R.drawable.ic_garden_update);
+            int eventType = parser.getEventType();
+            while (eventType != XmlPullParser.END_DOCUMENT) {
+                if (eventType == XmlPullParser.START_TAG && parser.getName().equals("path")) {
+                    String pathName = parser.getAttributeValue(0);
+                    if (pathName != null && pathName.equals(name)) {
+                        for (int i = 0; i < parser.getAttributeCount(); i++) {
+                            String attributeName = parser.getAttributeName(i);
+                            if (attributeName.equals("pathData")) {
+                                String pathData = parser.getAttributeValue(i);
+                                return PathParser.createPathFromPathData(pathData);
+                            }
+                        }
+
+                    }
+                }
+                eventType = parser.next();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+     */
+
 }

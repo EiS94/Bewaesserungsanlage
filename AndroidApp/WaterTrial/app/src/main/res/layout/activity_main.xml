@@ -24,12 +24,12 @@
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
         android:text="Garten:"
-        android:textStyle="bold"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/switchWaterValve"
         app:layout_constraintEnd_toEndOf="@+id/switchWaterValve"
         app:layout_constraintStart_toStartOf="@+id/switchWaterValve"
-        app:layout_constraintTop_toBottomOf="@+id/textData"/>
+        app:layout_constraintTop_toBottomOf="@+id/textData" />
 
     <TextView
         android:id="@+id/textWater"
@@ -71,8 +71,8 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
         android:text="Wetter:"
-        android:textStyle="bold"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -127,13 +127,15 @@
         app:layout_constraintStart_toStartOf="@+id/btnUpdate2"
         app:layout_constraintTop_toBottomOf="@+id/btnUpdate2" />
 
-    <com.richpath.RichPathView
-        android:id="@+id/gardenNew"
+    <com.sdsmdg.harjot.vectormaster.VectorMasterView
+        android:id="@+id/garden"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/btnChartActivity"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/switchWaterValve"
-        app:vector="@drawable/ic_garden_update" />
+        app:vector_src="@drawable/ic_garden_update" />
 
     <Button
         android:id="@+id/settings"
@@ -145,6 +147,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,6 +9,7 @@ import java.net.ProtocolException;
 import java.net.URL;
 import java.util.concurrent.TimeoutException;
 
+// TODO change to Executor
 public class ValveChanger extends AsyncTask<String, Void, Void> {
 
     @Override

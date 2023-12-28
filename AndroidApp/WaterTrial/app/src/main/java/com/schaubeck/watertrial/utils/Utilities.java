@@ -1,10 +1,17 @@
-package com.schaubeck.watertrial;
+package com.schaubeck.watertrial.utils;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.graphics.Path;
 import android.os.Bundle;
+
+import androidx.core.graphics.PathParser;
+
+import com.schaubeck.watertrial.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.xmlpull.v1.XmlPullParser;
 
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
